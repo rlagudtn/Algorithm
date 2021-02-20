@@ -69,6 +69,68 @@
 
 
 #################################1963
+# from collections import deque
+# import sys
+# import math
+# input=sys.stdin.readline
+# MAX=int(1e4)
+# MIN=int(1e3)
+#
+#
+# def change_one_digit(number,digit,i):
+#     left=number[:digit]
+#     right=number[digit+1:]
+#     return int(left+str(i)+right)
+# # print(change_one_digit('1234',3,9))
+# isPrime=[True]*(MAX)
+# isPrime[0]=False
+# isPrime[1]=False
+# def is_prime_num():
+#     end=int(math.sqrt(MAX))
+#     for i in range(2,end):
+#         if isPrime[i]==False: continue
+#         j = 2
+#         k = i * j
+#         while k < MAX:
+#             isPrime[k] = False
+#             j += 1
+#             k = i * j
+# # print(isPrime)
+# def get_result(first,second):
+#     d = [0] * (MAX - MIN)
+#     visit=[False]*(MAX-MIN)
+#     q=deque()
+#     q.append(first)
+#     visit[first-MIN]=True
+#     while q:
+#         num=q.popleft()
+#         if num==second:
+#             break
+#         for digit in range(4):
+#             for i in range(10):
+#                 if digit==0 and i==0: continue
+#                 temp=change_one_digit(str(num),digit,i)
+#                 if visit[temp-MIN]==False and isPrime[temp]==True:
+#                     d[temp-MIN]=d[num-MIN]+1
+#                     q.append(temp)
+#                     visit[temp-MIN]=True
+#
+#     return d[second-MIN]
+#
+# # print(get_result(1373,8017))
+#
+# n=int(input())
+# testcase= [list(map(int,input().split())) for _ in range(n)]
+# is_prime_num() #에라토스의 체
+# for case in testcase:
+#     print(get_result(case[0],case[1]))
+
+# print(testcase)
+
+
+
+
+
 ################1963#################9019
 #################################1525
 #################################2251
