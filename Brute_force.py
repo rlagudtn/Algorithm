@@ -127,11 +127,56 @@
 
 # print(testcase)
 
+#################################9019
+# import sys
+# from collections import deque
+# input=sys.stdin.readline
+# MAX=int(1e4)
+# def cal(number,motion):
+#     if motion=='D':
+#         return (number*2)%MAX
+#     elif motion=='S':
+#         return (number-1)%MAX
+#     elif motion=='L':
+#         q=number//1000
+#         remainder=number%1000
+#         return remainder*10+q
+#     elif motion=='R':
+#         q = number // 10
+#         remainder = number % 10
+#         return remainder * 1000 + q
+#
+# # print(cal(0,'S'))
+#
+# # print(cal(1000,'L'))
+# # print(cal(1234,'L'))
+# # print(cal(1,'R'))
+# # print(cal(1234,'R'))
+#
+# def get_result(i,o):
+#     visit=[False]*MAX
+#     q=deque()
+#
+#     q.append((i,''))
+#     while q:
+#         now,string=q.popleft()
+#         if now==o:
+#             return string
+#         for m in motion:
+#             temp=cal(now,m)
+#             if visit[temp]==False:
+#                 q.append((temp,string+m))
+#                 visit[temp]=True
+#
+# motion=['D','S','L','R']
+# # print(get_result(1,16))
+# n=int(input())
+# data=[list(map(int,input().split())) for _ in range(n)]
+# for case in data:
+#     print(get_result(case[0],case[1]))
+#
 
 
-
-
-################1963#################9019
 #################################1525
 #################################2251
 #################################2186
