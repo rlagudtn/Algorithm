@@ -179,6 +179,32 @@
 
 #################################1525
 #################################2251
+from collections import deque
+
+def bfs():
+    while q:
+        x,y,z=q.popleft()
+        if visit[x][y]==True: continue
+        if x==0: result[z]=True
+        visit[x][y]=True
+        #a->b
+
+        if x+y>b: q.append((x+y-b,b,z))
+        else : q.append((0,x+y,z))
+        #b->c
+        if y+z>c: q.append((x,y+z-c,c))
+        else : q.append((x,0,y+z))
+        #c->a
+        if z+x>a: q.append((a,y,z+x-a))
+        else : q.append((z+x,y,0))
+a,b,c=map(int,input().split())
+visit=[[False]*(201) for _ in range(201)]
+q=deque()
+q.append((0, 0, c))
+result=[False]*201
+bfs()
+for i in range(201):
+    if result[i]==True: print(i,end=' ')
 #################################2186
 #################################3108
 #################################5014
