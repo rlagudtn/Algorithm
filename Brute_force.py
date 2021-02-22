@@ -177,34 +177,76 @@
 #
 
 
-#################################1525
-#################################2251
+#################################1525  ####2차원 좌표 1차원 변형
 from collections import deque
+n=''
+for _ in range(3):
+    temp=input().split()
+    n+="".join(temp)
 
-def bfs():
-    while q:
-        x,y,z=q.popleft()
-        if visit[x][y]==True: continue
-        if x==0: result[z]=True
-        visit[x][y]=True
-        #a->b
-
-        if x+y>b: q.append((x+y-b,b,z))
-        else : q.append((0,x+y,z))
-        #b->c
-        if y+z>c: q.append((x,y+z-c,c))
-        else : q.append((x,0,y+z))
-        #c->a
-        if z+x>a: q.append((a,y,z+x-a))
-        else : q.append((z+x,y,0))
-a,b,c=map(int,input().split())
-visit=[[False]*(201) for _ in range(201)]
+    # return string[:s]+string[f]+string[s+1:f]+string[s]+string[f+1:]
+# print(change_location('012345678',6,1))
 q=deque()
-q.append((0, 0, c))
-result=[False]*201
-bfs()
-for i in range(201):
-    if result[i]==True: print(i,end=' ')
+q.append(n)
+
+dist=dict()
+dist[n]=0
+
+dy=[1,-1,0,0]
+dx=[0,0,1,-1]
+
+def get_result():
+    while q:
+        now = q.popleft()
+        if now == '123456780': return dist[now]
+
+
+        index = now.find('0')
+        y,x=index//3,index%3            #1차원을 2차원 좌표로 변환하기
+
+        for i in range(4):
+            ny=y+dy[i]
+            nx=x+dx[i]
+            if 0<=nx<3 and 0<=ny<3:
+                nIndex=3*ny+nx
+                ns=list(now)
+                ns[index],ns[nIndex]=ns[nIndex],ns[index]
+                ns="".join(ns)
+                if not dist.get(ns):
+                    dist[ns]=dist[now]+1
+                    q.append(ns)
+    return -1
+
+
+
+print(get_result())
+#################################2251
+# from collections import deque
+#
+# def bfs():
+#     while q:
+#         x,y,z=q.popleft()
+#         if visit[x][y]==True: continue
+#         if x==0: result[z]=True
+#         visit[x][y]=True
+#         #a->b
+#
+#         if x+y>b: q.append((x+y-b,b,z))
+#         else : q.append((0,x+y,z))
+#         #b->c
+#         if y+z>c: q.append((x,y+z-c,c))
+#         else : q.append((x,0,y+z))
+#         #c->a
+#         if z+x>a: q.append((a,y,z+x-a))
+#         else : q.append((z+x,y,0))
+# a,b,c=map(int,input().split())
+# visit=[[False]*(201) for _ in range(201)]
+# q=deque()
+# q.append((0, 0, c))
+# result=[False]*201
+# bfs()
+# for i in range(201):
+#     if result[i]==True: print(i,end=' ')
 #################################2186
 #################################3108
 #################################5014
