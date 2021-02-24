@@ -248,6 +248,45 @@
 # for i in range(201):
 #     if result[i]==True: print(i,end=' ')
 #################################2186
+import  sys
+sys.setrecursionlimit(10000)
+
+input=sys.stdin.readline
+
+n,m,k=map(int,input().split())
+board=[list(input().rstrip()) for _ in range(n)]
+word=input().rstrip()
+length=len(word)
+dy=[1,-1,0,0]
+dx=[0,0,1,-1]
+
+memo=[[[-1]*length for _ in range(m)] for _ in range(n)]
+# print(board)
+# print(word)
+def get_count(dist,cy,cx):
+    if dist==length-1: return 1
+    if memo[cy][cx][dist]!=-1:
+        return memo[cy][cx][dist]
+    result=0
+    for i in range(4):
+        for j in range(1,k+1):
+            ny=cy+j * dy[i]
+            nx=cx+j * dx[i]
+            if 0<=ny<n and 0<=nx<m and board[ny][nx]==word[dist+1]:
+                result+=get_count(dist+1,ny,nx)
+
+    return result
+
+# print(get_count(0,3,1))
+result=0
+for i in range(n):
+    for j in range(m):
+        if board[i][j]==word[0]:
+            result+=get_count(0,i,j)
+print(result)
+
+
+
 #################################3108
 #################################5014
 #################################1759
