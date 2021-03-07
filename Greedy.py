@@ -103,23 +103,40 @@ print(e[0]-sum(e[1:]))
 # print(result)
 
 ###########################1946########################
-import sys
-input=sys.stdin.readline
-
-t=int(input())
-
-for _ in range(t):
-    n=int(input())
-    s=[0]*(n+1)
-    for i in range(n):
-        a,b=map(int,input().split())       ####튜플을 만들지 않고 하는 방법 tech
-        s[a]=b
-    min_n=s[1]
-    count=0 #탈락인원
-    for i in range(2,n+1):
-        if s[i]>min_n: #탈락하는 경우
-            count+=1
-        else: min_n=s[i]
-    print(n-count)
+# import sys
+# input=sys.stdin.readline
+#
+# t=int(input())
+#
+# for _ in range(t):
+#     n=int(input())
+#     s=[0]*(n+1)
+#     for i in range(n):
+#         a,b=map(int,input().split())       ####튜플을 만들지 않고 하는 방법 tech
+#         s[a]=b
+#     min_n=s[1]
+#     count=0 #탈락인원
+#     for i in range(2,n+1):
+#         if s[i]>min_n: #탈락하는 경우
+#             count+=1
+#         else: min_n=s[i]
+#     print(n-count)
 ###########################11000########################
-
+###답안 참고했음==>아이디어==>시간복잡도 만족을 위해 우선순위 큐를 사용
+# import sys
+# import heapq
+# input=sys.stdin.readline
+#
+# n=int(input())
+# arr=[list(map(int,input().split())) for _ in range(n)]
+# arr.sort(key=lambda x:x[0])
+#
+# q=[]
+# heapq.heappush(q,arr[0][1])
+# for i in range(1,n):
+#     if q[0]<=arr[i][0]: #
+#         heapq.heappop(q)
+#
+#     heapq.heappush(q,arr[i][1])
+#
+# print(len(q))
