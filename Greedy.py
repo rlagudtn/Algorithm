@@ -84,9 +84,9 @@
 #         result-=data[i]
 #     return result
 # print(get_result())
-list=['2','3']
-e=[ sum(list(map(int,x.split('+')))) for x in input().split('-')]
-print(e[0]-sum(e[1:]))
+# list=['2','3']
+# e=[ sum(list(map(int,x.split('+')))) for x in input().split('-')]
+# print(e[0]-sum(e[1:]))
 ###########################11047########################
 # import sys
 # input=sys.stdin.readline
