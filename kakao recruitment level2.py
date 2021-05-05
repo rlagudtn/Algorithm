@@ -1,3 +1,79 @@
+# #####################경주로 건설
+# from collections import deque
+# import time
+#
+# def solution(board):
+#     def bfs(start):
+#         dy = [-1, 0, 1, 0]
+#         dx = [0, 1, 0, -1]
+#         n = len(board)
+#         cost_board = [[int(1e9)] * n for _ in range(n)]
+#         q = deque([start])
+#         cost_board[0][0]=0
+#
+#         while q:
+#             y,x,cost,dir=q.popleft()
+#             for i in range(len(dy)):
+#                 ny=y+dy[i]
+#                 nx=x+dx[i]
+#                 n_cost=cost+600 if i!=dir else cost+100
+#                 if 0<=ny<n and 0<=nx<n and board[ny][nx]==0 and cost_board[ny][nx]>n_cost:
+#                     q.append((ny,nx,n_cost,i))
+#                     cost_board[ny][nx]=n_cost
+#         return cost_board[-1][-1]
+#
+#         return
+#     return min(bfs((0,0,0,1)),bfs((0,0,0,2)))
+# print(solution([[0,0,1,0],[0,0,0,0],[0,1,0,1],[1,0,0,0]]))
+
+
+
+# # ################불량 사용자
+# from itertools import permutations
+# # lst=[[1,2,3],['a','b'],[10,11]]
+# # print(list(product(*lst))) #########곱집합 이차원배열
+# # a=set((1,2,3))
+# # print(len(a))
+# def matched(user,banned):
+#     length=len(banned)
+#     if len(user)!=length:
+#         return False
+#     for i in range(length):
+#         if banned[i]=='*':
+#             continue
+#         elif banned[i]!=user[i]:
+#             return False
+#
+#     return True
+# def overlaped(arr,el):
+#     temp_el = set(el)
+#     for i in arr:
+#         temp=set(i)
+#         if temp==temp_el:
+#             return True
+#     return False
+# def solution(user_id, banned_id):
+#     answer = []
+#     for i in list(permutations(user_id,len(banned_id))):
+#         temp=[]
+#         for j in range(len(banned_id)):
+#             if not matched(i[j],banned_id[j]):
+#                 break
+#             temp.append(i[j])
+#         if len(temp)==len(banned_id) and not overlaped(answer,temp):
+#             answer.append(temp)
+#     return len(answer)
+#
+# print(solution(["frodo", "fradi", "crodo", "abc123", "frodoc"],
+#                ["fr*d*", "*rodo", "******", "******"]))
+
+
+
+
+
+
+
+
 ###################보석 쇼
 
 #
