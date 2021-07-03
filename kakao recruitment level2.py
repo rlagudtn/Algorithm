@@ -1,3 +1,191 @@
+#########3
+from bisect import bisect_left
+# from bisect import bisect_left
+# def move_left(arr,s,d):
+#     i=s
+#     count=0
+#     while(count<d):
+#         i-=1
+#         if(arr[i]=="X"):
+#             continue
+#         count+=1
+#     return i
+#
+# def move_right(arr,curr,d):
+#     i = curr
+#
+#     count = 0
+#     while (count < d):
+#         i =arr[i][2]
+#         count += 1
+#     return i
+#
+# def delete(arr,d,stack,curr):
+#     d[curr]="X"
+#     index=arr[curr][2]
+#
+#     if curr==len(arr)-1:
+#         index=arr[curr][0]
+#         arr[curr-1][2]=-1
+#     else:
+#         arr[arr[curr][0]][2]= arr[curr][2]
+#         arr[arr[curr][2]][0]=arr[curr][0]
+#     stack.append(arr[curr])
+#     return index
+#
+# def recover(arr,d,stack,curr):
+#     node=stack.pop()
+#     d[node[1]]="O"
+#     if(node[1]<=curr):
+#         curr+=1
+#     if(node[1]==len(arr)-1):
+#         arr[node[0]][2]=node[1]
+#     return curr
+#
+# def solution(n, k, cmd):
+#     curr=k
+#     arr=((i-1,i,i+1) for i in range(n))
+#     arr[n-1][2]=-1
+#     d=["O" for _ in range(n)]
+#     stack=[]
+#     for i in cmd:
+#         if i[0]=='C':
+#             curr=delete(arr,d,stack,curr)
+#         elif i[0]=='Z':
+#             curr=recover(arr,stack,curr)
+#         elif i[0]=='U':
+#             a,dis=i.split()
+#             curr=move_left(curr,int(dis))
+#         elif i[0]=='D':
+#             a, dis = i.split()
+#             curr = move_right(curr, int(dis),len(arr))
+#     answer=["X" for _ in range(n)]
+#     for i in arr:
+#         answer[i]="O"
+#
+#
+#     return "".join(answer)
+
+# def move_left(s,d):
+#     return s-d
+#
+# def move_right(s,d,size):
+#     return s+d
+#
+# def delete(arr,stack,s):
+#     index=s
+#     if s==len(arr)-1:
+#         index=s-1
+#     node=arr.pop(s)
+#     stack.append((s,node))
+#     return index
+#
+# def recover(arr,stack,curr):
+#     index,node=stack.pop()
+#
+#     if(index<=curr):
+#         curr+=1
+#     if(index>=len(arr)):
+#         arr.append(node)
+#     else:
+#         arr.insert(index,node)
+#     return curr
+#
+# def solution(n, k, cmd):
+#     curr=k
+#     init=[i for i in range(n)]
+#     arr=init[:]
+#     stack=[]
+#     for i in cmd:
+#         if i[0]=='C':
+#             curr=delete(arr,stack,curr)
+#         elif i[0]=='Z':
+#             curr=recover(arr,stack,curr)
+#         elif i[0]=='U':
+#             a,dis=i.split()
+#             curr=move_left(curr,int(dis))
+#         elif i[0]=='D':
+#             a, dis = i.split()
+#             curr = move_right(curr, int(dis),len(arr))
+#     answer=["X" for _ in range(n)]
+#     for i in arr:
+#         answer[i]="O"
+#
+#
+#     return "".join(answer)
+print(solution(8,2,["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
+# #########2
+#
+# def invertTwoDem(s):
+#     arr=[[0]*5 for _ in range(5)]
+#     for i in range(5):
+#         for j in range(5):
+#             arr[i][j]=s[i][j]
+#     return arr
+# def isSafe(arr,y,x):
+#     if(arr[y][x]!="P"):
+#         return True
+#     dy=[1,0,-1,0]
+#     dx=[0,1,0,-1]
+#     dr=[-1,1,1,-1]
+#     dc=[1,1,-1,-1]
+#
+#     #상하좌우
+#     for i in range(4):
+#         for j in range(1,3):
+#             ny=y+dy[i]*j
+#             nx=x+dx[i]*j
+#             if ny<0 or ny>=5 or nx<0 or nx>=5:
+#                 break
+#             if arr[ny][nx]=="X":
+#                 break
+#             if arr[ny][nx]=="P":
+#                 return False
+#     #대각선
+#     for i in range(4):
+#         ny=y+dr[i]
+#         nx=x+dc[i]
+#         if ny < 0 or ny >= 5 or nx < 0 or nx >= 5:
+#             continue
+#         if arr[ny][nx]=="P" and not(arr[ny][x]=="X" and arr[y][nx]=="X"):
+#             return False
+#     return True
+# def solution(places):
+#     answer = []
+#     for k in places:
+#         arr=invertTwoDem(k)
+#         ret=1;
+#         for i in range(5):
+#             for j in range(5):
+#                 bol=isSafe(arr,i,j)
+#                 if not bol:
+#                     ret=0
+#         answer.append(ret)
+#
+#     return answer
+# print(solution([["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPXX", "OXXXP", "POOXX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
+# #########1
+#
+
+#
+# def solution(s):
+#     answer = 0
+#     nums={"":"","zero":"0","one":"1","two":"2","three":"3","four":"4","five":"5","six":"6","seven":"7","eight":"8","nine":"9"}
+#     ret=""
+#     number=""
+#     for i in range(len(s)):
+#         if s[i].isdigit():
+#             ret+=s[i]
+#             continue
+#         number += s[i]
+#         if number in nums.keys():
+#             ret+=nums[number]
+#             number=""
+#
+#     return int(ret)
+# print(solution("one4seveneight"))
+
+
 # #####################경주로 건설
 # from collections import deque
 # import time
