@@ -1,5 +1,77 @@
 #########################GREEDY#############
+##############1543 문서 검색
 
+
+
+# ############1449 수리공 항승
+# n,l=map(int,input().split())
+# arr=[0]*1001
+# for i in list(map(int,list(input().split()))):
+#     arr[i]=1
+#
+# count=0
+# temp=0
+# def seal(length,i):
+#     k=i
+#     while k<1001 and k<i+length:
+#         arr[k]=0
+#         k+=1
+# i=1
+# while i<1001:
+#     if arr[i]==1:
+#         seal(i,l)
+#         count+=1
+#         i+=l
+#         continue
+#     i+=1
+# print(count)
+
+
+# #############1783번 병든 나이트
+# n,m=map(int,input().split())
+# if n==1:
+#     print(1)
+# elif n==2:
+#     ret=(m+1)//2
+#     print(min(4,ret))
+# else:
+#     if m<7:
+#         print(min(4,m))
+#     else:
+#         print(m-2)
+# #########1080번 행렬
+# import sys
+# input=sys.stdin.readline
+# n,m=map(int,input().split())
+# arr1=[]
+# arr2=[]
+#
+# for _ in range(n):
+#     arr1.append(list(map(int,list(input().rstrip()))))
+# for _ in range(n):
+#     arr2.append(list(map(int,list(input().rstrip()))))
+# answer=0
+# def change(arr,y,x):
+#     for i in range(y,y+3):
+#         for j in range(x,x+3):
+#             arr[i][j]=1-arr[i][j]
+#
+# for i in range(n-2):
+#     for j in range(m-2):
+#         if arr1[i][j]!=arr2[i][j]:
+#             change(arr1,i,j)
+#             answer+=1
+#
+# nonReulst = False
+# for i in range(n):
+#     for j in range(m):
+#         if arr1[i][j] != arr2[i][j]:
+#             nonReulst = True
+#
+# if(nonReulst):
+#     print(-1)
+# else:
+#     print(answer)
 # #2217번 #21.03.01
 # import sys
 # input=sys.stdin.readline

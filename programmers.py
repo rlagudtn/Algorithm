@@ -1,57 +1,123 @@
+######################방금 그곡
+import math
+class Parser:
+    def __init__(self,musicinfo):
+        self.musicInfo=musicinfo
+    def parse(self):
+        time1,time2,name,melody=self.musicInfo.split(',')
+        time=self.parseTime(time1,time2)
+        return time,name,melody
+    def parseTime(self,t1,t2):
+        t1h,t1m=t1.split(':')
+        t2h,t2m=t2.split(':')
+        minutes=int(t2m)-int(t1m)
+        if minutes<0:
+            minutes+=60
+            t2h-=1
+        minutes+=(int(t2h)-int(t1h))*60
+        return minutes
+
+
+def solution(m, musicinfos):
+    answer = None
+    maxValue=0
+    for i in musicinfos:
+        parser=Parser(i)
+        time,name,melody=parser.parse()
+        m_count=len([x for x in melody if x !="#"])
+        if time>m_count:
+            n=time/m_count
+            melody*=math.ceil(n)
+        else:
+            k=0
+            index=0
+            for i in range(len(melody)):
+                index=i
+                if melody[i]=="#":
+                    continue
+                if k==m_count:
+                    break
+                k+=1
+            melody=melody[:index]
+        if melody.count(m)==0 or melody.count(m)==melody.count(m+"#"):
+            continue
+        if len(melody)>maxValue:
+            maxValue=len(melody)
+            answer=name
+    return answer
+print(solution("ABC",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+####################캐시######33
+
+# from collections import deque
+# def solution(cacheSize, cities):
+#     q=deque(maxlen=cacheSize)
+#     answer=0
+#     for k in cities:
+#         i=k.upper()
+#         if i in q:
+#             q.remove(i)
+#             answer+=1
+#         else:
+#             answer +=5
+#         q.append(i)
+#
+#     return answer
+# print(solution(3,	["Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"]))
+
 ###############프렌즈 4블록
 # arr=[[0,1,0,2] for _ in range(3)]
 # print(arr)
 # for i in range(3):
 #     arr[i]=[x for x in arr[i] if x!=0]
 # print(arr)
-def isSame(board,cy,cx):
-    same=True
-    if cx>=len(board[cy]) or cx+1>=len(board[cy+1]):
-        return False
-    if board[cy+1][cx]!=board[cy][cx]:
-        same=False
-    if board[cy][cx+1]!=board[cy][cx]:
-        same=False
-    if board[cy+1][cx+1]!=board[cy][cx]:
-        same=False
-    return same
-
-def removeSame(board,equals):
-    for cy,cx in equals:
-        board[cy][cx]=0
-        board[cy+1][cx]=0
-        board[cy][cx+1]=0
-        board[cy+1][cx+1]=0
-def removeZero(board):
-    ret=0
-    for i in range(len(board)):
-        before=len(board[i])
-        board[i]=[x for x in board[i] if x!=0]
-        ret+=before-len(board[i])
-    return ret
-def run(board):
-    equals=[]
-    for i in range(len(board)-1):
-        for j in range(len(board[i])-1):
-            if isSame(board,i,j):
-                equals.append([i,j])
-    removeSame(board,equals)
-
-    return removeZero(board)
-def solution(m, n, board):
-    answer = 0
-    arr=[[0]*m for _ in range(n)]
-    for i in range(m):
-        temp=list(board[i])
-        for j in range(n):
-            arr[j][m-i-1]=temp[j]
-    while True:
-        count=run(arr)
-        if count==0:
-            break
-        answer+=count
-    return answer
-print(solution(6,6,["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"]))
+# def isSame(board,cy,cx):
+#     same=True
+#     if cx>=len(board[cy]) or cx+1>=len(board[cy+1]):
+#         return False
+#     if board[cy+1][cx]!=board[cy][cx]:
+#         same=False
+#     if board[cy][cx+1]!=board[cy][cx]:
+#         same=False
+#     if board[cy+1][cx+1]!=board[cy][cx]:
+#         same=False
+#     return same
+#
+# def removeSame(board,equals):
+#     for cy,cx in equals:
+#         board[cy][cx]=0
+#         board[cy+1][cx]=0
+#         board[cy][cx+1]=0
+#         board[cy+1][cx+1]=0
+# def removeZero(board):
+#     ret=0
+#     for i in range(len(board)):
+#         before=len(board[i])
+#         board[i]=[x for x in board[i] if x!=0]
+#         ret+=before-len(board[i])
+#     return ret
+# def run(board):
+#     equals=[]
+#     for i in range(len(board)-1):
+#         for j in range(len(board[i])-1):
+#             if isSame(board,i,j):
+#                 equals.append([i,j])
+#     removeSame(board,equals)
+#
+#     return removeZero(board)
+# def solution(m, n, board):
+#     answer = 0
+#     arr=[[0]*m for _ in range(n)]
+#     for i in range(m):
+#         temp=list(board[i])
+#         for j in range(n):
+#             arr[j][m-i-1]=temp[j]
+#     while True:
+#         count=run(arr)
+#         if count==0:
+#             break
+#         answer+=count
+#     return answer
+# print(solution(6,6,["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"]))
 ####################후보키
 # from itertools import combinations
 #
