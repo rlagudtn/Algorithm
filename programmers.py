@@ -1,51 +1,129 @@
-######################방금 그곡
-import math
-class Parser:
-    def __init__(self,musicinfo):
-        self.musicInfo=musicinfo
-    def parse(self):
-        time1,time2,name,melody=self.musicInfo.split(',')
-        time=self.parseTime(time1,time2)
-        return time,name,melody
-    def parseTime(self,t1,t2):
-        t1h,t1m=t1.split(':')
-        t2h,t2m=t2.split(':')
-        minutes=int(t2m)-int(t1m)
-        if minutes<0:
-            minutes+=60
-            t2h-=1
-        minutes+=(int(t2h)-int(t1h))*60
-        return minutes
+##############괄호 회전하기
+from collections import deque
+pairLeft={'(':1,'{':2,'[':3}
+pairRight={')':1,'}':2,']':3}
+def isRight(temp):
 
+    stack=deque()
 
-def solution(m, musicinfos):
-    answer = None
-    maxValue=0
-    for i in musicinfos:
-        parser=Parser(i)
-        time,name,melody=parser.parse()
-        m_count=len([x for x in melody if x !="#"])
-        if time>m_count:
-            n=time/m_count
-            melody*=math.ceil(n)
+    for i in temp:
+        if i in pairLeft.keys():
+            stack.append(i)
         else:
-            k=0
-            index=0
-            for i in range(len(melody)):
-                index=i
-                if melody[i]=="#":
-                    continue
-                if k==m_count:
-                    break
-                k+=1
-            melody=melody[:index]
-        if melody.count(m)==0 or melody.count(m)==melody.count(m+"#"):
-            continue
-        if len(melody)>maxValue:
-            maxValue=len(melody)
-            answer=name
+            if len(stack)==0:
+                return False
+            top=stack.pop()
+            if pairLeft[top]!=pairRight[i]:
+                return False
+    if len(stack)!=0:
+        return False
+    return True
+
+
+def solution(s):
+    answer = 0
+    for i in range(len(s)-1):
+        first=s[:i]
+        second=s[i:]
+        if isRight(second+first):
+            answer+=1
     return answer
-print(solution("ABC",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+print(solution("}}}"))
+# #################멀쩡한 사각형
+# import math
+# def solution(w,h):
+#     gcd = math.gcd(w, h)
+#     return w*h-(w+h-gcd)
+#
+#
+# print(solution(8,12))
+##################추석 트래픽
+# def check(li,time):
+#     start=time
+#     end=time+1000
+#     cnt=0
+#     for i in li:
+#         if i[1]>=start and i[0]<end:
+#             cnt+=1
+#     return cnt
+# def solution(lines):
+#     answer = 1
+#     li=[]
+#     for i in lines:
+#         date,time,duration=i.split()
+#         h,m,s=time.split(":")
+#
+#         end=(int(h)*3600+int(m)*60+float(s))*1000
+#
+#         dur=float(duration.replace("s",""))*1000
+#
+#         start=end-dur+1
+#         li.append([start,end])
+#
+#     print(li)
+#     for i in li:
+#         answer=max(answer,check(li,i[0]),check(li,i[1]))
+#     return answer
+# print(solution([
+# "2016-09-15 20:59:57.421 0.351s",
+# "2016-09-15 20:59:58.233 1.181s",
+# "2016-09-15 20:59:58.299 0.8s",
+# "2016-09-15 20:59:58.688 1.041s",
+# "2016-09-15 20:59:59.591 1.412s",
+# "2016-09-15 21:00:00.464 1.466s",
+# "2016-09-15 21:00:00.741 1.581s",
+# "2016-09-15 21:00:00.748 2.31s",
+# "2016-09-15 21:00:00.966 0.381s",
+# "2016-09-15 21:00:02.066 2.62s"
+# ]))
+######################방금 그곡
+# import math
+# class Parser:
+#     def __init__(self,musicinfo):
+#         self.musicInfo=musicinfo
+#     def parse(self):
+#         time1,time2,name,melody=self.musicInfo.split(',')
+#         time=self.parseTime(time1,time2)
+#         return time,name,melody
+#     def parseTime(self,t1,t2):
+#         t1h,t1m=t1.split(':')
+#         t2h,t2m=t2.split(':')
+#         minutes=int(t2m)-int(t1m)
+#         if minutes<0:
+#             minutes+=60
+#             t2h-=1
+#         minutes+=(int(t2h)-int(t1h))*60
+#         return minutes
+#
+#
+# def solution(m, musicinfos):
+#     answer = None
+#     maxValue=0
+#     for i in musicinfos:
+#         parser=Parser(i)
+#         time,name,melody=parser.parse()
+#         m_count=len([x for x in melody if x !="#"])
+#         if time>m_count:
+#             n=time/m_count
+#             melody*=math.ceil(n)
+#         else:
+#             k=0
+#             index=0
+#             for i in range(len(melody)):
+#                 index=i
+#                 if melody[i]=="#":
+#                     continue
+#                 if k==m_count:
+#                     break
+#                 k+=1
+#             melody=melody[:index]
+#         if melody.count(m)==0 or melody.count(m)==melody.count(m+"#"):
+#             continue
+#         if len(melody)>maxValue:
+#             maxValue=len(melody)
+#             answer=name
+#     return answer
+# print(solution("ABC",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
 ####################캐시######33
 
 # from collections import deque
