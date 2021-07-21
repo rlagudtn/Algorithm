@@ -1,34 +1,164 @@
-##############괄호 회전하기
-from collections import deque
-pairLeft={'(':1,'{':2,'[':3}
-pairRight={')':1,'}':2,']':3}
-def isRight(temp):
+# ###################거리두기 확인하기
+# def isSafe(place,y,x):
+#     dy=[-1,0,1,0]
+#     dx=[0,1,0,-1]
+#     diag=[(1,1),(1,-1),(-1,1),(-1,-1)]
+#     for i in range(4):
+#         for j in range(1,3):
+#             ny=y+dy[i]*j
+#             nx=x+dx[i]*j
+#             if ny<0 or ny>=5 or nx<0 or nx>=5:
+#                 break
+#             if place[ny][nx]=='P':
+#                 return False
+#             if place[ny][nx]=='X':
+#                 break
+#
+#         for cy,cx in diag:
+#             ny=y+cy
+#             nx=x+cx
+#             if ny < 0 or ny >= 5 or nx < 0 or nx >= 5:
+#                 continue
+#             if place[ny][nx]=='P' and not (place[y][nx]=='X' and place[ny][x]=='X'):
+#
+#                 return False
+#
+#
+#     return True
+#
+# def keepDistance(place):
+#     for i in range(len(place)):
+#         for j in range(len(place[0])):
+#             if place[i][j]=='O' or place[i][j]=='X':
+#                 continue
+#             if not isSafe(place,i,j):
+#                 return False
+#     return True
+# def solution(places):
+#     answer = []
+#     for i in places:
+#         if keepDistance(i):
+#             answer.append(1)
+#         else:
+#             answer.append(0)
+#     return answer
+#
+# print(solution([["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
+# #################예상 대진표
+# import math
+#
+# def solution(n,a,b):
+#     answer = 0
+#     k=math.log(n,2)
+#     n=n//2
+#     standard=n
+#     count=0
+#     while True:
+#         n//=2
+#         if (a<=standard and b>standard) or (a>standard and b<=standard):
+#             break
+#         elif a<=standard and b<=standard:
+#             standard-=n
+#         else:
+#             standard+=n
+#         count+=1
+#
+#     answer=k-count
+#     return answer
 
-    stack=deque()
 
-    for i in temp:
-        if i in pairLeft.keys():
-            stack.append(i)
-        else:
-            if len(stack)==0:
-                return False
-            top=stack.pop()
-            if pairLeft[top]!=pairRight[i]:
-                return False
-    if len(stack)!=0:
-        return False
-    return True
+#################게임 맵 최단거리
+# from collections import deque
+# def bfs(graph):
+#     dy=[0,0,-1,1]
+#     dx=[1,-1,0,0]
+#
+#     n=len(graph)
+#     m=len(graph[0])
+#     visit=[[1]*m for _ in range(n)]
+#     q=deque()
+#
+#     q.append((0,0,1))
+#     visit[0][0]=0
+#
+#     while q:
+#         cy,cx,dist=q.popleft()
+#         if cy==n-1 and cx==m-1:
+#             return dist
+#         for i in range(4):
+#             ny=cy+dy[i]
+#             nx=cx+dx[i]
+#
+#             if 0<=ny<n and 0<=nx<m and graph[ny][nx]==1 and visit[ny][nx]==1:
+#                 visit[ny][nx]=0
+#                 q.append((ny,nx,dist+1))
+#
+#     return -1
+#
+# def solution(maps):
+#     answer = 0
+#
+#
+#
+#     return bfs(maps)
 
 
-def solution(s):
-    answer = 0
-    for i in range(len(s)-1):
-        first=s[:i]
-        second=s[i:]
-        if isRight(second+first):
-            answer+=1
-    return answer
-print(solution("}}}"))
+# print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]	))
+###############짝지어 제거하기
+# from collections import deque
+# def solution(s):
+#     answer =1
+#     stack=deque()
+#
+#     for i in range(len(s)):
+#         if len(stack)==0:
+#             stack.append(s[i])
+#             continue
+#
+#         last=stack.pop()
+#         if last==s[i]:
+#             continue
+#         stack.append(last)
+#         stack.append(s[i])
+#
+#     if len(stack)!=0:
+#         answer=0
+#     return answer
+#
+# print(solution("baabaa"))
+# print(solution("cdcd"))
+
+# ##############괄호 회전하기
+# from collections import deque
+# pairLeft={'(':1,'{':2,'[':3}
+# pairRight={')':1,'}':2,']':3}
+# def isRight(temp):
+#
+#     stack=deque()
+#
+#     for i in temp:
+#         if i in pairLeft.keys():
+#             stack.append(i)
+#         else:
+#             if len(stack)==0:
+#                 return False
+#             top=stack.pop()
+#             if pairLeft[top]!=pairRight[i]:
+#                 return False
+#     if len(stack)!=0:
+#         return False
+#     return True
+#
+#
+# def solution(s):
+#     answer = 0
+#     for i in range(len(s)-1):
+#         first=s[:i]
+#         second=s[i:]
+#         if isRight(second+first):
+#             answer+=1
+#     return answer
+# print(solution("}}}"))
 # #################멀쩡한 사각형
 # import math
 # def solution(w,h):
