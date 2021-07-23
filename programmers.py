@@ -1,3 +1,120 @@
+##################점프와 순간이동
+def solution(n):
+    ans = 0
+
+    while n>=1:
+        if n%2==0:
+            n//=2
+            continue
+        n-=1
+        ans+=1
+
+    return ans
+
+print(solution(5000))
+# #################삼각 달팽이
+# import math
+# arr=[1,2,3]
+# arr.insert(-(1),4)
+# arr.insert(0,5)
+# def fillAround(arr,start,n,shell):
+#     #n과 shell 을 이용해서 범위를 구한다
+#     top=2*(shell-1)
+#     length=n-3*(shell-1)
+#     end=start+3*(length-1)-1
+#     left=start+1
+#     right=end
+#     for i in range(length):
+#         if i==0:
+#             middle=top//2
+#             arr[top].insert(middle,start)
+#         elif i==length-1:
+#             num=left
+#             for j in range(length):
+#                 arr[top].insert(shell-1+j,num)
+#                 num+=1
+#         else:
+#             arr[top].insert(-(shell-1),right)
+#
+#             arr[top].insert(shell-1,left)
+#             left+=1
+#             right-=1
+#         top+=1
+#     #위에서부터 채운다.
+#     #마지막 숫자를 반환한다.
+#     return end
+# def solution(n):
+#     arr = [[] for _ in range(n)]
+#     shells=math.ceil(n/3)
+#     start=1
+#     for i in range(1,shells+1):
+#         end=fillAround(arr,start,n,i)
+#         start=end+1
+#     return sum(arr,[])
+# print(solution(5))
+# ###영어 끝말잇기
+# def solution(n, words):
+#     li=set([])
+#     answer=[0,0]
+#     now=2
+#     turn=1
+#     leavingOut=False
+#     previous=words[0]
+#     li.add(words[0])
+#     for i in range(1,len(words)):
+#         if now>n:
+#             now=1
+#             turn+=1
+#         if words[i] in li or previous[-1]!=words[i][0] :
+#             leavingOut=True
+#             break
+#         li.add(words[i])
+#         previous=words[i]
+#         now+=1
+#     if leavingOut==True:
+#         answer=[now,turn]
+#
+#     return answer
+#
+# print(solution(2,["hello", "one", "even", "never", "now", "world", "draw"]))
+
+#######################배달 -->최단 거리 이동
+# import heapq
+# INF=int(1e9)
+# def dijkstra(graph,N,start):
+#     q=[]
+#     d=[INF]*(N+1)
+#     d[start]=0
+#     heapq.heappush(q,(0,start))
+#
+#     while q:
+#         dist,now=heapq.heappop(q)
+#
+#         if d[now]<dist:
+#             continue
+#
+#         for i in graph[now]:
+#             cost=dist+i[1]
+#             if d[i[0]]>cost:
+#                 d[i[0]]=cost
+#                 heapq.heappush(q,(cost,i[0]))
+#
+#     return d
+#
+# def solution(N, road, K):
+#     answer = 0
+#     graph=[[] for _ in range(N+1)]
+#     for a,b,c in road:
+#         graph[a].append((b,c))
+#         graph[b].append((a,c))
+#     d=dijkstra(graph,N,1)
+#
+#     result=[i for i in range(1,N+1) if d[i]<=K ]
+#
+#
+#     return len(result)
+#
+# print(solution(5,[[1,2,1],[2,3,3],[5,2,2],[1,4,2],[5,3,1],[5,4,2]],3))
 # ###################거리두기 확인하기
 # def isSafe(place,y,x):
 #     dy=[-1,0,1,0]
