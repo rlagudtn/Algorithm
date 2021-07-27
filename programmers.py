@@ -1,17 +1,103 @@
-##################점프와 순간이동
-def solution(n):
-    ans = 0
+###################스킬 트리
 
-    while n>=1:
-        if n%2==0:
-            n//=2
-            continue
-        n-=1
-        ans+=1
+def solution(skill, skill_trees):
+    answer = 0
 
-    return ans
+    for skill_tree in skill_trees:
+        skill_list = list(skill)
 
-print(solution(5000))
+        for s in skill_tree:
+            if s in skill:
+                if s!=skill_list.pop(0):
+                    break
+        else:
+            answer+=1
+
+    return answer
+
+# def isPreceded(skill,skill_tree):
+#     d=[0]*len(skill)
+#     d[0]=skill_tree.find(skill[0])
+#     for i in range(1,len(skill)):
+#         d[i]=skill_tree.find(skill[i])
+#         if d[i]!=-1 and (d[i-1]>d[i] or d[i-1]==-1):
+#             return False
+#     return True
+#
+# def solution(skill, skill_trees):
+#     answer = 0
+#
+#     for skill_tree in skill_trees:
+#         if isPreceded(skill,skill_tree):
+#             answer+=1
+#     return answer
+print(solution("CBD",["BACDE", "CBADF", "AECB", "BDA"]))
+
+###################쿼드압축 후 개수 세기
+# from collections import deque
+#
+#
+# def isAllSame(arr,top,left,size):
+#     num=arr[top][left]
+#     for i in range(size):
+#         for j in range(size):
+#             if arr[top+i][left+j]!=num:
+#                 return False
+#     return True
+# def solution(arr):
+#     answer = [0]*2
+#     stack=deque()
+#     stack.append((0,0,len(arr)))
+#
+#     while stack:
+#         top,left,size=stack.pop()
+#         if isAllSame(arr,top,left,size):
+#             answer[arr[top][left]]+=1
+#             continue
+#
+#         size//=2
+#         stack.append((top,left,size))
+#         stack.append((top,left+size,size))
+#         stack.append((top+size,left,size))
+#         stack.append((top+size,left+size,size))
+#
+#     return answer
+# print(solution([[1,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1],[0,0,0,0,1,1,1,1],[0,1,0,0,1,1,1,1],[0,0,0,0,0,0,1,1],[0,0,0,0,0,0,0,1],[0,0,0,0,1,0,0,1],[0,0,0,0,1,1,1,1]]))
+###################이진 변환 반복하기
+# def countZero(s):
+#     count=0
+#     for i in s:
+#         if i=='0':
+#             count+=1
+#     return count
+#
+# def solution(s):
+#     zero=0
+#     count=0
+#     while True:
+#         if s=="1":
+#             break
+#         zero+=countZero(s)
+#         s=s.replace("0","")
+#         s=str(format(len(s),'b'))
+#         count+=1
+#     answer=[count,zero]
+#     return answer
+# print(solution("01110"))
+# ##################점프와 순간이동
+# def solution(n):
+#     ans = 0
+#
+#     while n>=1:
+#         if n%2==0:
+#             n//=2
+#             continue
+#         n-=1
+#         ans+=1
+#
+#     return ans
+#
+# print(solution(5000))
 # #################삼각 달팽이
 # import math
 # arr=[1,2,3]
