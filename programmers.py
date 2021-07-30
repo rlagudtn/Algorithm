@@ -1,19 +1,130 @@
-###################스킬 트리
+####################n 진수 게임
+import string
 
-def solution(skill, skill_trees):
-    answer = 0
+tmp = string.digits+string.ascii_uppercase
+def convert(num, base) :
+    q, r = divmod(num, base)
+    if q == 0 :
+        return tmp[r]
+    else :
+        return convert(q, base) + tmp[r]
 
-    for skill_tree in skill_trees:
-        skill_list = list(skill)
 
-        for s in skill_tree:
-            if s in skill:
-                if s!=skill_list.pop(0):
-                    break
-        else:
-            answer+=1
+def solution(n, t, m, p):
+    answer = ''
+    #최대 문자열 구하기
+    temp=''
+    i=0
+    while True:
+        if len(temp)>m*t:
+            break
+        temp+=str(convert(i,n))
 
+        i+=1
+    for i in range(t):
+        answer+=temp[i*m+p-1]
     return answer
+print(solution(16,16,2,2))
+#########################방금 그곡
+# import math
+#
+#
+# def solution(m, musicinfos):
+#     answer=[]
+#     sharp=['C#','D#','F#','G#','A#']
+#     small=['c','d','f','g','a']
+#     for i in range(len(sharp)):
+#         m=m.replace(sharp[i],small[i])
+#
+#     for i in range(len(musicinfos)):
+#         start,end,name,melody=musicinfos[i].split(',')
+#         for j in range(len(sharp)):
+#             melody = melody.replace(sharp[j], small[j])
+#         start_h,start_m=map(int,start.split(':'))
+#         end_h,end_m=map(int,end.split(':'))
+#         time=(end_h-1-start_h)*60+(end_m-start_m+60)
+#         if time<len(melody):
+#             melody=melody[:time]
+#         else:
+#             repeat=math.ceil(time/len(melody))
+#             melody*=repeat
+#             melody=melody[:time]
+#         if m in melody:
+#             answer.append([len(melody),i,name])
+#
+#     answer.sort(key=lambda x:(-x[0],x[1]))
+#     ret = "(None)"
+#
+#     if len(answer)!=0:
+#         ret=answer[0][2]
+#     return ret
+# print(solution("ABCDEFG",["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+# print(solution("CC#BCC#BCC#BCC#B",["03:00,03:30,FOO,CC#B", "04:00,04:30,BAR,CC#BCC#BCC#BCC#BCC#BCC#BCC#B"]	))
+# #######################방문 길이
+# def move(s,d,cy,cx):
+#     ny,nx=cy,cx
+#     if d=='U':
+#         ny-=1
+#     elif d=='R':
+#         nx+=1
+#     elif d=='D':
+#         ny+=1
+#     elif d=='L':
+#         nx-=1
+#     if ny>5 or ny<-5 or nx>5 or nx<-5:
+#         return cy,cx
+#     s.add(((ny,nx),(cy,cx)))
+#     s.add(((cy,cx),(ny,nx)))
+#     return ny,nx
+# def solution(dirs):
+#     cy,cx=0,0
+#     s=set()
+#     for d in dirs:
+#         cy,cx=move(s,d,cy,cx)
+#         print(cy,cx)
+#     answer=len(s)//2
+#     return answer
+# #
+# print(solution("ULURRDLLU"))
+# print(solution("LULLLLLLU"))
+
+###################2개 이하로 다른 비트
+# def getUpperValue(num):
+#     string=format(num,'b')
+#     string='0'+string
+#     zero=string.rfind('0')
+#     upperValue=list(string)
+#     if zero==len(string)-1:
+#         upperValue[zero]='1'
+#     else:
+#         upperValue[zero]='1'
+#         upperValue[zero+1]='0'
+#     upperValue=''.join(upperValue)
+#     return int(upperValue,2)
+#
+# def solution(numbers):
+#     answer = []
+#
+#     for i in numbers:
+#         answer.append(str(getUpperValue(i)))
+#     return answer
+# print(solution([2,7,11,12,int(1e15)]))
+###################스킬 트리
+#
+# def solution(skill, skill_trees):
+#     answer = 0
+#
+#     for skill_tree in skill_trees:
+#         skill_list = list(skill)
+#
+#         for s in skill_tree:
+#             if s in skill:
+#                 if s!=skill_list.pop(0):
+#                     break
+#         else:
+#             answer+=1
+#
+#     return answer
 
 # def isPreceded(skill,skill_tree):
 #     d=[0]*len(skill)
@@ -31,7 +142,7 @@ def solution(skill, skill_trees):
 #         if isPreceded(skill,skill_tree):
 #             answer+=1
 #     return answer
-print(solution("CBD",["BACDE", "CBADF", "AECB", "BDA"]))
+# print(solution("CBD",["BACDE", "CBADF", "AECB", "BDA"]))
 
 ###################쿼드압축 후 개수 세기
 # from collections import deque
@@ -409,54 +520,7 @@ print(solution("CBD",["BACDE", "CBADF", "AECB", "BDA"]))
 # "2016-09-15 21:00:00.966 0.381s",
 # "2016-09-15 21:00:02.066 2.62s"
 # ]))
-######################방금 그곡
-# import math
-# class Parser:
-#     def __init__(self,musicinfo):
-#         self.musicInfo=musicinfo
-#     def parse(self):
-#         time1,time2,name,melody=self.musicInfo.split(',')
-#         time=self.parseTime(time1,time2)
-#         return time,name,melody
-#     def parseTime(self,t1,t2):
-#         t1h,t1m=t1.split(':')
-#         t2h,t2m=t2.split(':')
-#         minutes=int(t2m)-int(t1m)
-#         if minutes<0:
-#             minutes+=60
-#             t2h-=1
-#         minutes+=(int(t2h)-int(t1h))*60
-#         return minutes
-#
-#
-# def solution(m, musicinfos):
-#     answer = None
-#     maxValue=0
-#     for i in musicinfos:
-#         parser=Parser(i)
-#         time,name,melody=parser.parse()
-#         m_count=len([x for x in melody if x !="#"])
-#         if time>m_count:
-#             n=time/m_count
-#             melody*=math.ceil(n)
-#         else:
-#             k=0
-#             index=0
-#             for i in range(len(melody)):
-#                 index=i
-#                 if melody[i]=="#":
-#                     continue
-#                 if k==m_count:
-#                     break
-#                 k+=1
-#             melody=melody[:index]
-#         if melody.count(m)==0 or melody.count(m)==melody.count(m+"#"):
-#             continue
-#         if len(melody)>maxValue:
-#             maxValue=len(melody)
-#             answer=name
-#     return answer
-# print(solution("ABC",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+
 ####################캐시######33
 
 # from collections import deque

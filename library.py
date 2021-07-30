@@ -1,3 +1,16 @@
+##################n 진법 변환 코드
+
+# import string
+#
+# tmp = string.digits+string.ascii_uppercase
+# def convert(num, base) :
+#     q, r = divmod(num, base)
+#     if q == 0 :
+#         return tmp[r]
+#     else :
+#         return convert(q, base) + tmp[r]
+
+
 ##두 쌍을 리스트로 배열에 push
 
 # for _ in range(n):
