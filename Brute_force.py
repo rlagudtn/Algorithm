@@ -1,3 +1,109 @@
+####################2632 피자판매 (투포인터)
+import sys
+input=sys.stdin.readline
+size=int(input())
+n,m=map(int,input().split())
+a=list(int(input()) for _ in range(n))
+b=list(int(input()) for _ in range(m))
+asum=sum(a)
+bsum=sum(b)
+a*=2
+b*=2
+intervalSum=0
+aset={0:1,asum:1}
+bset={0:1,bsum:1}
+for start in range(n):
+    intervalSum=0
+    for end in range(start,start+n-1):
+        intervalSum+=a[end]
+        if intervalSum>size:
+            break
+        aset[intervalSum]=aset.get(intervalSum,0)+1
+
+for start in range(m):
+    intervalSum=0
+    for end in range(start,start+m-1):
+        intervalSum+=b[end]
+        if intervalSum>size:
+            break
+        bset[intervalSum]=bset.get(intervalSum,0)+1
+answer=0
+for _,key in enumerate(aset):
+    answer+=aset[key]*bset.get(size-key,0)
+print(answer)
+
+####################7453
+# import sys
+#
+# input = sys.stdin.readline
+# n = int(input())
+# alist, blist, clist, dlist = [], [], [], []
+#
+# for _ in range(n):
+#     a, b, c, d = map(int, input().split())
+#     alist.append(a); blist.append(b); clist.append(c); dlist.append(d)
+#
+# ab = {}
+# cd = {}
+# for a in alist:
+#     for b in blist:
+#         ab[a + b] = ab.get(a + b, 0) + 1
+#
+# answer = 0
+# for c in clist:
+#     for d in dlist:
+#         answer += ab.get(-(c + d), 0)
+#
+# print(answer)
+
+# ################################3108
+# from collections import deque
+# import sys
+# input=sys.stdin.readline
+# n=int(input())
+# s=[[(0,0,0,0)]]
+#
+# def bfs(graph,cy,cx):
+#     q=deque()
+#     q.append([cy,cx])
+#     visit[cy][cx]=True
+#     while q:
+#         cy, cx = q.popleft()
+#
+#         for i in range(4):
+#             ny = cy + dy[i]
+#             nx = cx + dx[i]
+#             if 0 <= ny < 2001 and 0 <= nx < 2001 and graph[ny][nx] == 1 and visit[ny][nx] == False:
+#                 visit[ny][nx] = True
+#                 q.append([ny, nx])
+#
+# graph=[[0]*(2001) for _ in range(2001)]
+# visit=[[False]*(2001) for _ in range(2001)]
+# lst=[]
+# q=deque()
+# dy=[0,0,1,-1]
+# dx=[1,-1,0,0]
+# for _ in range(n):
+#     y1,x1,y2,x2=map(int,input().split())
+#     y1=y1*2+1000
+#     x1=x1*2+1000
+#     y2=y2*2+1000
+#     x2=x2*2+1000
+#     for i in range(y1,y2+1):
+#         graph[i][x1]=1
+#         graph[i][x2]=1
+#     for i in range(x1,x2+1):
+#         graph[y1][i]=1
+#         graph[y2][i]=1
+#     lst.append([y1,x1])
+# answer=0
+# for cy,cx in lst:
+#     if visit[cy][cx]==False:
+#         bfs(graph,cy,cx)
+#         answer+=1
+# if visit[1000][1000]==True:
+#     answer-=1
+# print(answer)
 #################################147
 #################################1107
 #################################1451
@@ -248,46 +354,46 @@
 # for i in range(201):
 #     if result[i]==True: print(i,end=' ')
 #################################2186
-import  sys
-sys.setrecursionlimit(10000)
+# import  sys
+# sys.setrecursionlimit(10000)
+#
+# input=sys.stdin.readline
+#
+# n,m,k=map(int,input().split())
+# board=[list(input().rstrip()) for _ in range(n)]
+# word=input().rstrip()
+# length=len(word)
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+#
+# memo=[[[-1]*length for _ in range(m)] for _ in range(n)]
+# # print(board)
+# # print(word)
+# def get_count(dist,cy,cx):
+#     if dist==length-1: return 1
+#     if memo[cy][cx][dist]!=-1:
+#         return memo[cy][cx][dist]
+#     result=0
+#     for i in range(4):
+#         for j in range(1,k+1):
+#             ny=cy+j * dy[i]
+#             nx=cx+j * dx[i]
+#             if 0<=ny<n and 0<=nx<m and board[ny][nx]==word[dist+1]:
+#                 result+=get_count(dist+1,ny,nx)
+#
+#     return result
+#
+# # print(get_count(0,3,1))
+# result=0
+# for i in range(n):
+#     for j in range(m):
+#         if board[i][j]==word[0]:
+#             result+=get_count(0,i,j)
+# print(result)
+#
 
-input=sys.stdin.readline
-
-n,m,k=map(int,input().split())
-board=[list(input().rstrip()) for _ in range(n)]
-word=input().rstrip()
-length=len(word)
-dy=[1,-1,0,0]
-dx=[0,0,1,-1]
-
-memo=[[[-1]*length for _ in range(m)] for _ in range(n)]
-# print(board)
-# print(word)
-def get_count(dist,cy,cx):
-    if dist==length-1: return 1
-    if memo[cy][cx][dist]!=-1:
-        return memo[cy][cx][dist]
-    result=0
-    for i in range(4):
-        for j in range(1,k+1):
-            ny=cy+j * dy[i]
-            nx=cx+j * dx[i]
-            if 0<=ny<n and 0<=nx<m and board[ny][nx]==word[dist+1]:
-                result+=get_count(dist+1,ny,nx)
-
-    return result
-
-# print(get_count(0,3,1))
-result=0
-for i in range(n):
-    for j in range(m):
-        if board[i][j]==word[0]:
-            result+=get_count(0,i,j)
-print(result)
 
 
-
-#################################3108
 #################################5014
 #################################1759
 #################################2580

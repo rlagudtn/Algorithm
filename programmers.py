@@ -1,30 +1,30 @@
-####################n 진수 게임
-import string
-
-tmp = string.digits+string.ascii_uppercase
-def convert(num, base) :
-    q, r = divmod(num, base)
-    if q == 0 :
-        return tmp[r]
-    else :
-        return convert(q, base) + tmp[r]
-
-
-def solution(n, t, m, p):
-    answer = ''
-    #최대 문자열 구하기
-    temp=''
-    i=0
-    while True:
-        if len(temp)>m*t:
-            break
-        temp+=str(convert(i,n))
-
-        i+=1
-    for i in range(t):
-        answer+=temp[i*m+p-1]
-    return answer
-print(solution(16,16,2,2))
+# ####################n 진수 게임
+# import string
+#
+# tmp = string.digits+string.ascii_uppercase
+# def convert(num, base) :
+#     q, r = divmod(num, base)
+#     if q == 0 :
+#         return tmp[r]
+#     else :
+#         return convert(q, base) + tmp[r]
+#
+#
+# def solution(n, t, m, p):
+#     answer = ''
+#     #최대 문자열 구하기
+#     temp=''
+#     i=0
+#     while True:
+#         if len(temp)>m*t:
+#             break
+#         temp+=str(convert(i,n))
+#
+#         i+=1
+#     for i in range(t):
+#         answer+=temp[i*m+p-1]
+#     return answer
+# print(solution(16,16,2,2))
 #########################방금 그곡
 # import math
 #
