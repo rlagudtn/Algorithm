@@ -1,38 +1,111 @@
-####################2632 피자판매 (투포인터)
-import sys
-input=sys.stdin.readline
-size=int(input())
-n,m=map(int,input().split())
-a=list(int(input()) for _ in range(n))
-b=list(int(input()) for _ in range(m))
-asum=sum(a)
-bsum=sum(b)
-a*=2
-b*=2
-intervalSum=0
-aset={0:1,asum:1}
-bset={0:1,bsum:1}
-for start in range(n):
-    intervalSum=0
-    for end in range(start,start+n-1):
-        intervalSum+=a[end]
-        if intervalSum>size:
-            break
-        aset[intervalSum]=aset.get(intervalSum,0)+1
+#########################2309 일곱 난장이
+from itertools import combinations
 
-for start in range(m):
-    intervalSum=0
-    for end in range(start,start+m-1):
-        intervalSum+=b[end]
-        if intervalSum>size:
-            break
-        bset[intervalSum]=bset.get(intervalSum,0)+1
-answer=0
-for _,key in enumerate(aset):
-    answer+=aset[key]*bset.get(size-key,0)
-print(answer)
+heights=[int(input()) for _ in range(9)]
+print(heights)
+answer=[]
+for lst in combinations(heights,7):
+    if sum(lst)==100:
+        answer=list(lst)
+        answer.sort()
+        for i in answer:
+            print(i)
+        break
+
+
+
+# ####################2143 두 배열의 합
+# import sys
+# input=sys.stdin.readline
+# t=int(input())
+#
+# n=int(input())
+# alist=list(map(int,input().split()))
+# m=int(input())
+# blist=list(map(int,input().split()))
+#
+#
+# first = {}
+# second = {}
+# for start in range(n):
+#     intervalSum = 0
+#     for end in range(start, n):
+#         intervalSum += alist[end]
+#         first[intervalSum] = first.get(intervalSum, 0) + 1
+#
+#
+# for start in range(m):
+#     intervalSum = 0
+#
+#     for end in range(start, m):
+#         intervalSum += blist[end]
+#         second[intervalSum] = second.get(intervalSum, 0) + 1
+#
+# answer=0
+# for _,key in enumerate(first):
+#     answer+=first[key]*second.get(t-key,0)
+# print(answer)
+####################2632 피자판매 (투포인터)
+# import sys
+# input=sys.stdin.readline
+# size=int(input())
+# n,m=map(int,input().split())
+# a=list(int(input()) for _ in range(n))
+# b=list(int(input()) for _ in range(m))
+# asum=sum(a)
+# bsum=sum(b)
+# a*=2
+# b*=2
+# intervalSum=0
+# aset={0:1,asum:1}
+# bset={0:1,bsum:1}
+# for start in range(n):
+#     intervalSum=0
+#     for end in range(start,start+n-1):
+#         intervalSum+=a[end]
+#         if intervalSum>size:
+
+#             break
+#         aset[intervalSum]=aset.get(intervalSum,0)+1
+#
+# for start in range(m):
+#     intervalSum=0
+#     for end in range(start,start+m-1):
+#         intervalSum+=b[end]
+#         if intervalSum>size:
+#             break
+#         bset[intervalSum]=bset.get(intervalSum,0)+1
+# answer=0
+# for _,key in enumerate(aset):
+#     answer+=aset[key]*bset.get(size-key,0)
+# print(answer)
 
 ####################7453
+# import sys
+# input=sys.stdin.readline
+# n=int(input())
+# alist,blist,clist,dlist=[],[],[],[]
+# for _ in range(n):
+#     a,b,c,d,=map(int,input().split())
+#     alist.append(a);blist.append(b);clist.append(c);dlist.append(d)
+#
+# first={}
+# second={}
+#
+# for a in alist:
+#     for b in blist:
+#         first[a+b]=first.get(a+b,0)+1
+#
+#
+#
+# answer=0
+#
+# for c in clist:
+#     for d in dlist:
+#         answer+=first.get(-(c+d),0)
+#
+# print(answer)
+
 # import sys
 #
 # input = sys.stdin.readline
@@ -56,7 +129,62 @@ print(answer)
 #
 # print(answer)
 
-# ################################3108
+# # ################################3108 로고
+# from collections import deque
+# dy=[0,0,-1,1]
+# dx=[1,-1,0,0]
+#
+# def bfs(graph,y,x):
+#     q=deque()
+#     q.append((y,x))
+#     visit[y][x]=True
+#
+#
+#     while q:
+#         cy,cx=q.popleft()
+#
+#         for i in range(4):
+#             ny=cy+dy[i]
+#             nx=cx+dx[i]
+#             if 0<=ny<2001 and 0<=nx<2001 and graph[ny][nx]==1 and visit[ny][nx]==False:
+#                 visit[ny][nx]=True
+#                 q.append((ny,nx))
+#
+#
+# n=int(input())
+# graph=[[0]*2001 for _ in range(2001)]
+# visit=[[False]*2001 for _ in range(2001)]
+#
+# start=deque()
+# for _ in range(n):
+#     y1,x1,y2,x2=map(int,input().split())
+#     y1=y1*2+1000
+#     x1=x1*2+1000
+#     y2=y2*2+1000
+#     x2=x2*2+1000
+#     for i in range(y1,y2+1):
+#         graph[i][x1]=1
+#         graph[i][x2]=1
+#     for i in range(x1,x2+1):
+#         graph[y1][i]=1
+#         graph[y2][i]=1
+#     start.append((y1,x1))
+#
+# answer=0
+# while start:
+#     y,x=start.pop()
+#     if visit[y][x]==False:
+#         bfs(graph,y,x)
+#         answer+=1
+#         pass
+#
+# if visit[1000][1000]==True:
+#     answer-=1
+# print(answer)
+
+
+
+
 # from collections import deque
 # import sys
 # input=sys.stdin.readline
