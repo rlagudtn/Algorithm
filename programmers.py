@@ -1,3 +1,52 @@
+####################문자열 압축
+def solution(s):
+    answer = len(s)
+    for length in range(1,len(s)//2+1):
+        i=0
+        string=""
+        count=1
+        previous=""
+        while i<len(s):
+            temp=s[i:i+length]
+            if temp==previous:
+                count+=1
+            else:
+                if count!=1:
+                    string+=str(count)
+                    count=1
+                string += previous
+
+            i+=length
+            previous=temp
+        if i>=len(s):
+            if count != 1:
+                string += str(count)
+            string+=previous
+        answer=min(answer,len(string))
+
+    return answer
+print(solution("aabbaccc"))
+# #####################삼각 달팽이
+#
+# def solution(n):
+#     lst = [[0]*i for i in range(1,n+1)]
+#     start=1
+#     dy=[1,0,-1]
+#     dx=[0,1,-1]
+#     cy,cx=0,0
+#     d=0
+#     while start<=n*(n+1)//2:
+#         lst[cy][cx]=start
+#         ny=cy+dy[d];nx=cx+dx[d]
+#         if 0<=ny<n and 0<=nx<n and lst[ny][nx]==0:
+#             cy=ny;cx=nx
+#         else:
+#             d=(d+1)%3
+#             cy+=dy[d];cx+=dx[d]
+#         start += 1
+#
+#     return sum(lst,[])
+# print(solution(4))
 # ####################n 진수 게임
 # import string
 #
