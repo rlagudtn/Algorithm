@@ -1,31 +1,146 @@
-####################문자열 압축
+#######################튜플
 def solution(s):
-    answer = len(s)
-    for length in range(1,len(s)//2+1):
-        i=0
-        string=""
-        count=1
-        previous=""
-        while i<len(s):
-            temp=s[i:i+length]
-            if temp==previous:
-                count+=1
-            else:
-                if count!=1:
-                    string+=str(count)
-                    count=1
-                string += previous
-
-            i+=length
-            previous=temp
-        if i>=len(s):
-            if count != 1:
-                string += str(count)
-            string+=previous
-        answer=min(answer,len(string))
-
+    answer = []
+    s=s.lstrip('{').rstrip('}').split("},{")
+    arr=[list(map(int,i.split(',')))for i in s]
+    print(arr)
+    arr.sort(key=lambda x:len(x))
+    for i in arr:
+        for j in i:
+            if j not in answer:
+                answer.append(j)
+                break
     return answer
-print(solution("aabbaccc"))
+print(solution("{{2},{2,1},{2,1,3,4},{2,1,3}}"))
+#################괄호 변환
+#RE
+# def seperateUV(s):
+#     p = {'(': 1, ')': -1}
+#     count = 0
+#     for i in range(len(s)):
+#         count += p[s[i]]
+#         if count == 0:
+#             return s[:i+1],s[i+1:]
+# def reverse(s):
+#     p={'(':')', ')':'('}
+#     ret=""
+#     for i in s:
+#         ret+=p[i]
+#     return ret
+# def isCorrect(s):
+#     p={'(':1,')':-1}
+#     count=0
+#     for i in s:
+#         count+=p[i]
+#         if count<0:
+#             return False
+#     return True
+# def step1(w):
+#     if w=="":
+#         return ""
+#     u, v = seperateUV(w)
+#     if isCorrect(u):
+#         return u+step1(v)
+#
+#     else:
+#         temp="("
+#         temp+=step1(v)
+#         temp+=")"
+#         u=u[1:-1]
+#         temp += reverse(u)
+#         return temp
+#
+#     pass
+# def solution(p):
+#     return step1(p)
+#
+#
+# print(solution("(()())()"))
+# print(solution(")("))
+# print(solution("()))((()"))
+#
+
+# def isCorrect(p):
+#     left=0
+#     right=0
+#     for i in p:
+#         if i=='(':
+#             left+=1
+#         else: right+=1
+#         if left<right:
+#             return False
+#
+#     return True
+#
+# def pivot_UV(p):
+#     i=0
+#     left=right=0
+#     while i==0 or left!=right:
+#         if p[i]=='(':left+=1
+#         else: right+=1
+#         i+=1
+#     return i
+#
+# def reverseBraket(p):
+#     answer=''
+#     for i in p:
+#         if i=='(':answer+=')'
+#         else: answer+='('
+#
+#     return answer
+#
+#
+#
+# def solution(p):
+#     answer = ''
+#     if len(p)==0: return ''
+#
+#     index = pivot_UV(p)
+#     u=p[:index]
+#     v=p[index:]
+#
+#     if isCorrect(u):
+#         answer=u+solution(v)
+#     else:
+#         temp='('
+#         temp+=solution(v)
+#         temp+=')'
+#         temp+=reverseBraket(u[1:-1])
+#         return temp
+#     return answer
+
+# ####################문자열 압축
+# def compress(text,length):
+#     words=[text[i:i+length] for i in range(0,len(text),length)]
+#     res=[]
+#     curWord=words[0]
+#     curCount=1
+#     for a,b in zip(words,words[1:]+['']):
+#         if a==b:
+#             curCount+=1
+#         else:
+#             res.append([curWord,curCount])
+#             curWord=b
+#             curCount=1
+#
+#     return sum(len(word)+(len(str(cnt)) if cnt>1 else 0) for word,cnt in res)
+#
+# def solution(text):
+#     return min([compress(text,i) for i in (range(1,len(text)//2+1))]+[len(text)])
+#
+#
+# a = [
+#     "aabbaccc",
+#     "ababcdcdababcdcd",
+#     "abcabcdede",
+#     "abcabcabcabcdededededede",
+#     "xababcdcdababcdcd",
+#
+#     'aaaaaa',
+# ]
+#
+# for x in a:
+#     print(solution(x))
 # #####################삼각 달팽이
 #
 # def solution(n):
@@ -362,6 +477,47 @@ print(solution("aabbaccc"))
 #
 # print(solution(5,[[1,2,1],[2,3,3],[5,2,2],[1,4,2],[5,3,1],[5,4,2]],3))
 # ###################거리두기 확인하기
+# from collections import deque
+#
+#
+# def safe(place,cy,cx):
+#     d=[(-1,0),(0,-1),(1,0),(0,1)]
+#     d2=[(-1,-1),(1,-1),(1,1),(-1,1)]
+#     for i in range(4):
+#         for j in range(1,3):
+#             ny=d[i][0]*j+cy
+#             nx=d[i][1]*j+cx
+#             if not 0<=ny<5 or not 0<=nx<5:
+#                 continue
+#             if place[ny][nx]=='X':
+#                 break
+#             if place[ny][nx]=='P':
+#                 return False
+#     for i in range(4):
+#         ny=cy+d2[i][0]; nx=cx+d2[i][1]
+#         if not (0<=ny<5) or not (0<=nx<5) or place[ny][nx]!='P':
+#             continue
+#         ny1 = ny;nx1 = cx
+#         ny2 = cy;nx2 = nx
+#         if place[ny1][nx1]!="X" or place[ny2][nx2]!="X":
+#             return False
+#     return True
+# def isPlaceSafe(place):
+#     for i in range(5):
+#         for j in range(5):
+#             if place[i][j] == 'P' and not safe(place, i, j):
+#                 return False
+#     return True
+# def solution(places):
+#     answer=[]
+#     for place in places:
+#         if isPlaceSafe(place):
+#             answer.append(1)
+#         else:
+#             answer.append(0)
+#
+#     return answer
+# print(solution([["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
 # def isSafe(place,y,x):
 #     dy=[-1,0,1,0]
 #     dx=[0,1,0,-1]
@@ -408,6 +564,18 @@ print(solution("aabbaccc"))
 #
 # print(solution([["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
 # #################예상 대진표
+import math
+# MAX=int(2**20)
+#
+# def solution(n,a,b):
+#     answer = 0
+#     while a!=b:
+#         answer+=1
+#         a=(a+1)//2; b=(b+1)//2
+#     return answer
+# print(solution(MAX,4,6))
+
+
 # import math
 #
 # def solution(n,a,b):
@@ -431,6 +599,35 @@ print(solution("aabbaccc"))
 
 
 #################게임 맵 최단거리
+# from collections import deque
+#
+# def bfs(maps):
+#     dy=[0,0,1,-1]
+#     dx=[1,-1,0,0]
+#     y,x=0,0
+#     n=len(maps)
+#     m=len(maps[0])
+#     q=deque()
+#     visit=[[False]*m for _ in range(n)]
+#
+#     visit[0][0]=True
+#     q.append((y,x,1))
+#     while q:
+#         cy,cx,dist=q.popleft()
+#         if cy==n-1 and cx==m-1:
+#             return dist
+#
+#         for i in range(4):
+#             ny=cy+dy[i]; nx=cx+dx[i]
+#             if 0<=ny<n and 0<=nx<m and maps[ny][nx]==1 and visit[ny][nx]==False:
+#                 visit[ny][nx]=True
+#                 q.append((ny,nx,dist+1))
+#     return -1
+#
+# def solution(maps):
+#
+#     return bfs(maps)
+# print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]))
 # from collections import deque
 # def bfs(graph):
 #     dy=[0,0,-1,1]
@@ -522,10 +719,10 @@ print(solution("aabbaccc"))
 #             answer+=1
 #     return answer
 # print(solution("}}}"))
-# #################멀쩡한 사각형
+#################멀쩡한 사각형
 # import math
 # def solution(w,h):
-#     gcd = math.gcd(w, h)
+#     gcd=math.gcd(w,h)
 #     return w*h-(w+h-gcd)
 #
 #
@@ -678,6 +875,25 @@ print(solution("aabbaccc"))
 
 
 ######################오픈 채팅방
+# def solution(record):
+#     answer = []
+#     q=[]
+#     printer={'Enter':'님이 들어왔습니다.','Leave':'님이 나갔습니다.'}
+#     s={}
+#     for i in record:
+#         temp=i.split()
+#         if temp[0] in ['Enter','Change']:
+#             s[temp[1]]=temp[2]
+#
+#         if temp[0] in printer.keys():
+#             q.append((temp[0],temp[1]))
+#
+#
+#     for commend,id in q:
+#         answer.append(s[id]+printer[commend])
+#
+#     return answer
+# print(solution(["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]))
 # def solution(record):
 #     answer = []
 #     dic={}
