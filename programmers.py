@@ -1,17 +1,37 @@
+from itertools import product
+def solution(numbers, target):
+    answer = 0
+    l=[(x,-x) for x in numbers]
+    arr=list(map(sum,product(*l)))
+    return arr.count(target)
+print(solution([1, 1, 1, 1, 1],3))
+
+# def solution(n):
+#     answer = ''
+#     nums=['1','2','4']
+#     while True:
+#         if n==0:
+#             break
+#         n-=1
+#         remainder=n%3
+#         answer=nums[remainder]+answer
+#         n//=3
+#     return answer
+# print(solution(12))
 #######################튜플
-def solution(s):
-    answer = []
-    s=s.lstrip('{').rstrip('}').split("},{")
-    arr=[list(map(int,i.split(',')))for i in s]
-    print(arr)
-    arr.sort(key=lambda x:len(x))
-    for i in arr:
-        for j in i:
-            if j not in answer:
-                answer.append(j)
-                break
-    return answer
-print(solution("{{2},{2,1},{2,1,3,4},{2,1,3}}"))
+# def solution(s):
+#     answer = []
+#     s=s.lstrip('{').rstrip('}').split("},{")
+#     arr=[list(map(int,i.split(',')))for i in s]
+#     print(arr)
+#     arr.sort(key=lambda x:len(x))
+#     for i in arr:
+#         for j in i:
+#             if j not in answer:
+#                 answer.append(j)
+#                 break
+#     return answer
+# print(solution("{{2},{2,1},{2,1,3,4},{2,1,3}}"))
 #################괄호 변환
 #RE
 # def seperateUV(s):
