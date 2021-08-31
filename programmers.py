@@ -1,10 +1,12 @@
-from itertools import product
-def solution(numbers, target):
-    answer = 0
-    l=[(x,-x) for x in numbers]
-    arr=list(map(sum,product(*l)))
-    return arr.count(target)
-print(solution([1, 1, 1, 1, 1],3))
+
+
+# from itertools import product
+# def solution(numbers, target):
+#     answer = 0
+#     l=[(x,-x) for x in numbers]
+#     arr=list(map(sum,product(*l)))
+#     return arr.count(target)
+# print(solution([1, 1, 1, 1, 1],3))
 
 # def solution(n):
 #     answer = ''

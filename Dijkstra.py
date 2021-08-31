@@ -1,38 +1,39 @@
 ##################1916 최소비용 구하기
 import heapq
 import sys
-INF=int(1e9)
-input=sys.stdin.readline
-n=int(input())
-m=int(input())
-graph=[[] for _ in range(n+1)]
-for _ in range(m):
-    a,b,c=map(int,input().split())
-    graph[a].append((b,c))
-
-start,end=map(int,input().split())
-
-
-def dijkstra(graph, start, end):
-    q=[]
-    d=[INF]*(n+1)
-    d[start]=0
-    heapq.heappush(q,(0,start))
-    while q:
-        dist,now=heapq.heappop(q)
-        if d[now]<dist:
-            continue
-
-        for next,c in graph[now]:
-            cost=d[now]+c
-            if cost<d[next]:
-                d[next]=cost
-                heapq.heappush(q,(cost,next))
-
-    return d[end]
-
-
-print(dijkstra(graph,start,end))
+print("hello")
+# INF=int(1e9)
+# input=sys.stdin.readline
+# n=int(input())
+# m=int(input())
+# graph=[[] for _ in range(n+1)]
+# for _ in range(m):
+#     a,b,c=map(int,input().split())
+#     graph[a].append((b,c))
+#
+# start,end=map(int,input().split())
+#
+#
+# def dijkstra(graph, start, end):
+#     q=[]
+#     d=[INF]*(n+1)
+#     d[start]=0
+#     heapq.heappush(q,(0,start))
+#     while q:
+#         dist,now=heapq.heappop(q)
+#         if d[now]<dist:
+#             continue
+#
+#         for next,c in graph[now]:
+#             cost=d[now]+c
+#             if cost<d[next]:
+#                 d[next]=cost
+#                 heapq.heappush(q,(cost,next))
+#
+#     return d[end]
+#
+#
+# print(dijkstra(graph,start,end))
 
 ##################백준 1238 파티 ====>역으로 어떻게 하는지 기억할 것
 # import sys

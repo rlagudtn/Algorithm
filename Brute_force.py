@@ -1,20 +1,57 @@
-#########################2309 일곱 난장이
+# #########################2309 일곱 난장이
+# from itertools import combinations
+#
+# heights=[int(input()) for _ in range(9)]
+# print(heights)
+# answer=[]
+# for lst in combinations(heights,7):
+#     if sum(lst)==100:
+#         answer=list(lst)
+#         answer.sort()
+#         for i in answer:
+#             print(i)
+#         break
+
+#######################1182 부분수열의 합
+# from itertools import combinations
+# n,s=map(int,input().split())
+# data=list(map(int,input().split()))
+# dic={}
+# for i in range(1,len(data)+1):
+#     for ele in combinations(data,i):
+#         temp=sum(ele)
+#         dic[temp]=dic.get(temp,0)+1
+# print(dic.get(s,0))
+
+######################1208 부분수열의 합2
 from itertools import combinations
-
-heights=[int(input()) for _ in range(9)]
-print(heights)
-answer=[]
-for lst in combinations(heights,7):
-    if sum(lst)==100:
-        answer=list(lst)
-        answer.sort()
-        for i in answer:
-            print(i)
-        break
-
-
-
+n,s=map(int,input().split())
+a=list(map(int,input().split()))
+first=a[:n//2]
+second=a[n//2:]
+dic1={}
+for i in range(1,len(first)+1):
+    for ele in combinations(first,i):
+        temp=sum(ele)
+        dic1[temp]=dic1.get(temp,0)+1
+answer=dic1.get(s,0)
+dic1[0]=dic1.get(0,0)+1
+for i in range(1,len(second)+1):
+    for ele in combinations(second,i):
+        temp=sum(ele)
+        answer+=dic1.get(s-temp,0)
+print(answer)
 # ####################2143 두 배열의 합
+#
+# t=int(input())
+# n=int(input())
+# a=map(int,input().split())
+# m=int(input())
+# b=map(int,input().split())
+
+
+
+
 # import sys
 # input=sys.stdin.readline
 # t=int(input())
