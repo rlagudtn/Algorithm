@@ -1,3 +1,109 @@
+##################6603
+############combination 이용
+from itertools import combinations
+
+while True:
+    arr=list(map(int,input().split()))
+    k=arr[0]
+    arr=arr[1:]
+    if k==0:
+        break
+    for i in combinations(arr,6):
+        li=list(i)
+        li.sort()
+        print(*li)
+    print()
+# ############################1261 알고스팟
+# import heapq
+#
+# m,n=map(int,input().split())
+# arr=[list(map(int,input())) for _ in range(n)]
+# visit=[[False]*m for _ in range(n)]
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+# visit[0][0]=True
+# q=[]
+# heapq.heappush(q,[0,0,0])
+# while q:
+#     count,y,x=heapq.heappop(q)
+#     if y==n-1 and x==m-1:
+#         print(count)
+#         break
+#
+#     for i in range(4):
+#         ny=y+dy[i];nx=x+dx[i]
+#         if 0<=ny<n and 0<=nx<m and visit[ny][nx]==False:
+#             heapq.heappush(q,[count+1 if arr[ny][nx]==1 else count,ny,nx])
+#             visit[ny][nx]=True
+
+
+##############################1644 소수의 연속합
+#풀이방법==> 에라토스의 체로 소수들 거른다음에 투포인터로 경우의 수 구하기
+# import math
+#
+# n=int(input())
+# nums=[True]*(n+1)
+# for i in range(2,math.sqrt(n)+1):
+#     if nums[i]==False:
+#         continue
+#     j=2
+#     while i*j<n+1:
+#         nums[i*j]=False
+#         j+=1
+# nums[0]=False;nums[1]=False
+# data=[x for x in range(n+1) if nums[x]==True]
+#
+# answer,end,interval=0,0,0
+# m=len(data)
+# for start in range(m):
+#     while end<m and interval<n:
+#         interval+=data[end]
+#         end+=1
+#
+#     if interval==n:
+#         answer+=1
+#
+#     interval-=data[start]
+# print(answer)
+
+# ##############################1806 부분합
+# n,s=map(int,input().split())
+# data=list(map(int,input().split()))
+#
+# end,interval=0,0
+# answer=int(1e9)
+# for start in range(n):
+#     while end<n and interval<s:
+#         interval+=data[end]
+#         end+=1
+#
+#     if interval>=s:
+#         answer=min(end-start,answer)
+#     interval-=data[start]
+# if answer==int(1e9):
+#     answer=0
+# print(answer)
+
+# ############################2003 수들의 합
+# n,m=map(int,input().split())
+# data=list(map(int,input().split()))
+#
+# end=0
+# intervalSum=0
+# answer=0
+# for start in range(n):
+#     while end<n and intervalSum<m:
+#         intervalSum+=data[end]
+#         end+=1
+#
+#     if intervalSum==m:
+#         answer += 1
+#     intervalSum-=data[start]
+#
+# print(answer)
+
+
+
 # #########################2309 일곱 난장이
 # from itertools import combinations
 #
@@ -24,23 +130,23 @@
 # print(dic.get(s,0))
 
 ######################1208 부분수열의 합2
-from itertools import combinations
-n,s=map(int,input().split())
-a=list(map(int,input().split()))
-first=a[:n//2]
-second=a[n//2:]
-dic1={}
-for i in range(1,len(first)+1):
-    for ele in combinations(first,i):
-        temp=sum(ele)
-        dic1[temp]=dic1.get(temp,0)+1
-answer=dic1.get(s,0)
-dic1[0]=dic1.get(0,0)+1
-for i in range(1,len(second)+1):
-    for ele in combinations(second,i):
-        temp=sum(ele)
-        answer+=dic1.get(s-temp,0)
-print(answer)
+# from itertools import combinations
+# n,s=map(int,input().split())
+# a=list(map(int,input().split()))
+# first=a[:n//2]
+# second=a[n//2:]
+# dic1={}
+# for i in range(1,len(first)+1):
+#     for ele in combinations(first,i):
+#         temp=sum(ele)
+#         dic1[temp]=dic1.get(temp,0)+1
+# answer=dic1.get(s,0)
+# dic1[0]=dic1.get(0,0)+1
+# for i in range(1,len(second)+1):
+#     for ele in combinations(second,i):
+#         temp=sum(ele)
+#         answer+=dic1.get(s-temp,0)
+# print(answer)
 # ####################2143 두 배열의 합
 #
 # t=int(input())
