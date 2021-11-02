@@ -1,18 +1,426 @@
-##################6603
-############combination 이용
-from itertools import combinations
+#####################1963 소수경로
 
-while True:
-    arr=list(map(int,input().split()))
-    k=arr[0]
-    arr=arr[1:]
-    if k==0:
-        break
-    for i in combinations(arr,6):
-        li=list(i)
-        li.sort()
-        print(*li)
-    print()
+
+
+##################9019 DSLR
+# from collections import deque
+# import sys
+# input=sys.stdin.readline
+# t=int(input())
+# def bfs(a,b):
+#     q=deque()
+#     q.append(["",a])
+#     visit=[False]*10000
+#     d=['D','S','L','R']
+#     while q:
+#         route,now=q.popleft()
+#         if now==b:
+#             return route
+#
+#         for i in d:
+#             temp=now
+#             nextString=""
+#             if i=='D':
+#                 nowInt = int(now)
+#                 nextInt=nowInt*2%10000
+#                 nextString="000"+str(nextInt)
+#                 nextString=nextString[-4:]
+#
+#             elif i=='S':
+#                 nowInt = int(now)
+#                 nextInt=(nowInt-1)%10000
+#                 nextString="000"+str(nextInt)
+#                 nextString=nextString[-4:]
+#             elif i=='L':
+#                 nextString=temp[1:]+temp[:1]
+#             elif i=='R':
+#                 nextString=temp[-1:]+temp[:-1]
+#
+#             index=int(nextString)
+#             if visit[index]==False:
+#                 q.append([route+i,nextString])
+#                 visit[index]=True
+#
+# for _ in range(t):
+#     a,b=input().split()
+#     a="000"+a;b="000"+b
+#     a=a[-4:];b=b[-4:]
+#
+#     answer=bfs(a,b)
+#     print(answer)
+
+##################1525 퍼즐
+# from collections import deque
+#
+# arr=[list(input().split()) for _ in range(3)]
+# data=[]
+# for i in arr:
+#     data.extend(i)
+# string=''.join(data)
+#
+# dy=[0,0,1,-1]
+# dx=[1,-1,0,0]
+#
+# def bfs(string):
+#     q=deque()
+#     q.append([0,string])
+#     visit = set([string])
+#     while q:
+#         dist,now=q.popleft()
+#         if now=='123456780':
+#             return dist
+#         index=now.index('0')
+#         cy=index//3;cx=index%3
+#         for i in range(4):
+#             ny=cy+dy[i];nx=cx+dx[i]
+#             nIndex=ny*3+nx
+#             if 0<=ny<3 and 0<=nx<3 :
+#                 nIndex=ny*3+nx
+#                 nextString=list(now)
+#                 nextString[index],nextString[nIndex]=nextString[nIndex],nextString[index]
+#                 nextString=''.join(nextString)
+#                 if nextString not in visit:
+#                     q.append([dist + 1, nextString])
+#                     visit.add(nextString)
+#     return -1
+#
+# print(bfs(string))
+###################2251 물통
+# from    collections import deque
+# a,b,c=map(int,input().split())
+# q=deque()
+# q.append([0,0,c])
+# visit=[[False]*(201) for _ in range(201)]
+# answer=[]
+# while q:
+#     x,y,z=q.popleft()
+#     if visit[x][y]==True:
+#         continue
+#     visit[x][y]=True
+#     if x==0:
+#         answer.append(z)
+#
+#     if x+y>b: q.append([x+y-b,b,z])
+#     else: q.append([0,x+y,z])
+#     if x+z>c: q.append([x+z-c,y,c])
+#     else: q.append([0,y,x+z])
+#     if y+z>c: q.append([x,y+z-c,c])
+#     else: q.append([x,0,y+z])
+#     if y+x>a: q.append([a,y+x-a,z])
+#     else: q.append([x+y,0,z])
+#     if z+x>a: q.append([a,y,x+z-a])
+#     else: q.append([z+x,y,0])
+#     if z+y>b: q.append([x,b,z+y-b])
+#     else: q.append([x,y+z,0])
+# answer.sort()
+# print(*answer)
+
+###################2186 문자판
+# #########################1번째
+# import sys
+# input=sys.stdin.readline
+# n,m,k=map(int,input().split())
+# arr=[list(input().rstrip()) for _ in range(n)]
+# word=input().rstrip()
+# answer=0
+# length=len(word)
+# d=[[[-1]*length for i in range(m)] for _ in range(n)]
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+# def dfs(y,x,idx):
+#     if y<0 or y>=n or x<0 or x>=m or arr[y][x]!=word[idx]:
+#         return 0
+#
+#     if d[y][x][idx]!=-1:
+#         return d[y][x][idx]
+#     if idx==length-1:
+#
+#         d[y][x][idx]=1
+#         return d[y][x][idx]
+#     d[y][x][idx]=0
+#     for i in range(4):
+#         for j in range(1,k+1):
+#             ny=y+dy[i]*j;nx=x+dx[i]*j
+#             d[y][x][idx]+=dfs(ny,nx,idx+1)
+#
+#     return d[y][x][idx]
+#
+# starts=[]
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j]==word[0]:
+#             starts.append([i,j])
+# for y,x in starts:
+#     answer+=dfs(y,x,0)
+# print(answer)
+# #########################2번째
+# arr=[]
+# import sys
+# input=sys.stdin.readline
+# n,m,k=map(int,input().split())
+# arr=[list(input()) for _ in range(n)]
+# keyValue=input().rstrip()
+# starts=[[i,j] for i in range(n) for j in range(m) if arr[i][j]==keyValue[0]]
+# visit=[[[-1]*len(keyValue) for _ in range(m)] for i in range(n)]
+# dy=[0,0,1,-1]
+# dx=[1,-1,0,0]
+# def dfs(y,x,idx):
+#     if idx==len(keyValue)-1:
+#         return 1
+#     if visit[y][x][idx]!=-1:
+#         return visit[y][x][idx]
+#
+#     visit[y][x][idx]=0
+#     for i in range(4):
+#         for j in range(1,k+1):
+#             ny=y+dy[i]*j; nx=x+dx[i]*j
+#             if 0<=ny<n and 0<=nx<m and arr[ny][nx]==keyValue[idx+1]:
+#                 visit[y][x][idx]+=dfs(ny,nx,idx+1)
+#
+#     return visit[y][x][idx]
+#
+# answer=0
+# for y,x in starts:
+#     answer+=dfs(y,x,0)
+# print(answer)
+
+# from collections import deque
+
+
+# startList=[[i,j] for i in range(n) for j in range(m) if arr[i][j]==keyValue[0]]
+#
+# answer=0
+# dy=[0,0,1,-1]
+# dx=[1,-1,0,0]
+# visit=[[[-1]*len(keyValue) for _ in range(m)] for i in range(n)]
+#
+# def dfs(y,x,idx):
+#     if idx==len(keyValue)-1:
+#         return 1
+#     if visit[y][x][idx]!=-1:
+#         return visit[y][x][idx]
+#     visit[y][x][idx]=0
+#     for i in range(4):
+#         for j in range(1, k + 1):
+#             ny = y + dy[i] * j
+#             nx = x + dx[i] * j
+#             if 0 <= ny < n and 0 <= nx < m and keyValue[idx + 1] == arr[ny][nx]:
+#                 visit[y][x][idx]+=dfs(ny,nx,idx+1)
+#
+#     return visit[y][x][idx]
+#
+#
+# for y,x in startList:
+#     answer+=dfs(y,x,0)
+#
+# print(answer)
+####################3108 로고
+# import sys
+# input=sys.stdin.readline
+# from collections import deque
+#
+# n=int(input())
+# arr=[[0]*2001 for _ in range(2001)]
+# starts=[]
+# visit=[[False]*2001 for _ in range(2001)]
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+# def paint(x1,y1,x2,y2):
+#     for i in range(x1,x2+1):
+#         arr[y1][i]=1
+#         arr[y2][i]=1
+#     for i in range(y1,y2+1):
+#         arr[i][x1]=1
+#         arr[i][x2]=1
+# for _ in range(n):
+#     x1,y1,x2,y2=map(int,input().split())
+#     x1=(x1+500)*2;y1=(y1+500)*2;x2=(x2+500)*2;y2=(y2+500)*2;
+#     paint(x1,y1,x2,y2)
+#     starts.append([x1,y1])
+# def bfs(y,x):
+#     q=deque()
+#     q.append([y,x])
+#     visit[y][x]=True
+#     while q:
+#         cy,cx, = q.popleft()
+#
+#         for i in range(4):
+#             ny=cy+dy[i];nx=cx+dx[i]
+#             if 0<=ny<2001 and 0<=nx<2001 and arr[ny][nx]==1 and visit[ny][nx]==False:
+#                 q.append([ny,nx])
+#                 visit[ny][nx]=True
+#
+#
+# answer=0
+# for x,y in starts:
+#     if visit[y][x]==False:
+#         bfs(y,x)
+#         answer+=1
+#
+# if arr[1000][1000]==1:
+#     answer-=1
+# print(answer)
+
+
+####################5014 스타트링크
+# from collections import deque
+#
+# f,s,g,u,d=map(int,input().split())
+# visit = [False] * (f + 1)
+# d = [u, -d]
+#
+#
+# def bfs():
+#     q = deque()
+#     q.append([0, s])
+#     visit[s] = True
+#     while q:
+#         dist, now = q.popleft()
+#         if now == g:
+#             return (dist)
+#
+#         for i in range(2):
+#             next = now + d[i]
+#             if 0 < next <= f and visit[next] == False:
+#                 q.append([dist + 1, next])
+#                 visit[next] = True
+#
+#     return 0
+#
+# def solution(f,s,g,u,d):
+#     if s==g:
+#         print(0)
+#         return
+#     answer=bfs()
+#     if answer==0:
+#         print('use the stairs')
+#         return
+#     print(answer)
+#
+# solution(u,s,g,u,d)
+# from collections import deque
+#
+# f,s,g,u,d=map(int,input().split())
+# visit=[False]*(f+1)
+# def bfs(s):
+#     q=deque()
+#     q.append([0,s])
+#     visit[s]=True
+#     while q:
+#         dist,now, = q.popleft()
+#         print(dist,now)
+#         if now==g:
+#             return dist
+#         nu=now+u;nd=now-d
+#         if nu<=f and visit[nu]==False:
+#             q.append([dist+1,nu])
+#             visit[nu]=True
+#
+#         if nd>=1 and visit[nd]==False:
+#             q.append([dist+1,nd])
+#             visit[nd]=True
+#
+#     return 0
+#
+# answer=bfs(s)
+# if s==g:
+#     print(0)
+# elif answer!=0:
+#     print(answer)
+# else:
+#     print("use the stairs")
+
+####################1759 암호 만들기
+#조합 사용
+# from itertools import combinations
+#
+# n,m=map(int,input().split())
+# data=input().split()
+# vowel=['a','e','i','o','u']
+# answer=[]
+# for i in combinations(data,n):
+#     li=list(i)
+#     v=0
+#     for i in vowel:
+#         for j in li:
+#             if i==j:
+#                 v+=1
+#     c=len(li)-v
+#     if v==0 or c<2:
+#         continue
+#     li.sort()
+#     pw="".join(li)
+#     answer.append(pw)
+# answer.sort()
+# for i in answer:
+# #     print(i)
+# # ##################1987 알파벳
+# import sys
+# from collections import deque
+#
+# input=sys.stdin.readline
+# n,m=map(int,input().split())
+# arr=[list(input().rstrip()) for _ in range(n)]
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+# def bfs():
+#     q=set([(arr[0][0],0,0)])
+#     answer=0
+#     while q:
+#         word,cy,cx=q.pop()
+#         answer=max(len(word),answer)
+#
+#
+#         for i in range(4):
+#             ny=cy+dy[i];nx=cx+dx[i]
+#             if 0<=ny<n and 0<=nx<m and arr[ny][nx] not in word:
+#                 q.add((arr[ny][nx]+word,ny,nx))
+#     return answer
+# print(bfs())
+
+
+
+
+
+
+
+# import sys
+#
+# dy=[1,-1,0,0]
+# dx=[0,0,1,-1]
+#
+# def bfs(y,x):
+#     global answer
+#     q=set([(y,x,arr[y][x])])
+#
+#     while q:
+#         y,x,ans=q.pop()
+#         for i in range(4):
+#             ny=y+dy[i];nx=x+dx[i]
+#
+#             if 0<=ny<n and 0<=nx<m and arr[ny][nx] not in ans:
+#                 q.add((ny,nx,ans+arr[ny][nx]))
+#                 answer=max(answer,len(ans)+1)
+# n,m=map(int,input().split())
+# arr=[list(input()) for _ in range(n)]
+# answer=1
+# bfs(0,0)
+# print(answer)
+##################6603
+# ############combination 이용
+# from itertools import combinations
+#
+# while True:
+#     arr=list(map(int,input().split()))
+#     k=arr[0]
+#     arr=arr[1:]
+#     if k==0:
+#         break
+#     for i in combinations(arr,6):
+#         li=list(i)
+#         li.sort()
+#         print(*li)
+#     print()
 # ############################1261 알고스팟
 # import heapq
 #
@@ -68,6 +476,29 @@ while True:
 
 # ##############################1806 부분합
 # n,s=map(int,input().split())
+# arr=list(map(int,input().split()))
+#
+# end,interval,answer=0,0,int(1e6)
+#
+# for start in range(n):
+#     while end<n and interval<s:
+#         interval+=arr[end]
+#         end+=1
+#
+#     if interval>=s:
+#         answer=min(answer,end-start)
+#     interval-=arr[start]
+#
+# if answer==int(1e9):
+#     print(0)
+# else:
+#     print(answer)
+#
+
+
+
+
+# n,s=map(int,input().split())
 # data=list(map(int,input().split()))
 #
 # end,interval=0,0
@@ -85,6 +516,28 @@ while True:
 # print(answer)
 
 # ############################2003 수들의 합
+# n,s=map(int,input().split())
+# arr=list(map(int,input().split()))
+#
+# end=0
+# interval=0
+# answer=0
+# for start in range(n):
+#     while end<n and interval<s:
+#         interval+=arr[end]
+#         end+=1
+#
+#     if interval ==s:
+#         answer+=1
+#     interval-=arr[start]
+# print(answer)
+
+
+
+
+
+
+
 # n,m=map(int,input().split())
 # data=list(map(int,input().split()))
 #
@@ -119,6 +572,34 @@ while True:
 #         break
 
 #######################1182 부분수열의 합
+# from itertools import combinations
+#
+# n,s=map(int,input().split())
+# arr=list(map(int,input().split()))
+# arr1=arr[:len(arr)//2]
+# arr2=arr[len(arr)//2:]
+# dic1,dic2={},{}
+#
+#
+# answer=0
+#
+# for k in range(1,len(arr1)+1):
+#     for subset in combinations(arr1,k):
+#         sumOfSubset=sum(subset)
+#         dic1[sumOfSubset]=dic1.get(sumOfSubset,0)+1
+#         if sumOfSubset==s:
+#             answer+=1
+#
+#
+# for k in range(1,len(arr2)+1):
+#     for subset in combinations(arr2,k):
+#         sumOfSubset = sum(subset)
+#         if sumOfSubset==s:
+#             answer+=1
+#         answer+=dic1.get(s-sumOfSubset,0)
+# print(answer)
+
+
 # from itertools import combinations
 # n,s=map(int,input().split())
 # data=list(map(int,input().split()))

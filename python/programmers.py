@@ -1,5 +1,49 @@
 
+def solution(N, number):
+    if N==number:
+        return 1
+    cache=[0,{N}]
+    for digit in range(2,9):
+        s=set([])
 
+        for i in range(1,digit):
+            for num1 in cache[i]:
+                for num2 in cache[digit-i]:
+                    s.add(num1+num2)
+                    s.add(num1*num2)
+                    s.add(num1-num2)
+
+                    if num2!=0:
+                        s.add(num1//num2)
+        s.add(int((str(N))*digit))
+        if number in s:
+            return digit
+        cache.append(s)
+    return -1
+print(solution(5,31168))
+# import math
+# def solution(progresses, speeds):
+#     answer = []
+#     days=[]
+#     for i in range(len(progresses)):
+#         spend= math.ceil((100-progresses[i])/speeds[i])
+#         days.append(spend)
+#     days.append(100)
+#     cnt=1
+#     tempMax=days[0]
+#     for i in range(1,len(days)):
+#         if tempMax<days[i]:
+#             answer.append(cnt)
+#             cnt=1
+#             tempMax=days[i]
+#         else:
+#             cnt+=1
+#
+#     return answer
+# print(solution([93, 30, 55],[1, 30, 5]))
+# print(solution([20, 30, 55],[1, 1, 1]))
+# print(solution([95, 90, 99, 99, 80, 99],[1, 1, 1, 1, 1, 1]))
+# print(solution([95, 90, 99, 98, 80, 99],[1, 1, 1, 1, 1, 1]))
 # from itertools import product
 # def solution(numbers, target):
 #     answer = 0
