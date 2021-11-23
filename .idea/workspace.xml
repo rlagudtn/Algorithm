@@ -2,33 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6101b8df-8609-4098-b2f8-7c7b30e5ee0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/algo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brute_force.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dijkstra.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Floyd_Warshall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Greedy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implement.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kruskal.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Samsung.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SchoolCodingTest.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javaL/src/1_Search_sort/1920.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/1_1_search_sort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/DP/backjun.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/C++/DP/backjun.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WBS_2nd_PS.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/WBS_2nd_PS.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/binary search.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/judge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kakao recruitment level2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programmers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/위상정렬.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Brute_force.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Brute_force.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Dijkstra.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Dijkstra.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Dp.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Dp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Floyd_Warshall.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Floyd_Warshall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Greedy.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Greedy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Implement.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Implement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Kruskal.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Kruskal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Samsung.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Samsung.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/SchoolCodingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/SchoolCodingTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/binary search.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/binary search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/judge.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/judge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/kakao recruitment level2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/kakao recruitment level2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/kakao21y2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/kakao21y2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/library.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/programmers.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/programmers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/위상정렬.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/위상정렬.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,7 +50,65 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/python" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="openjdk-16" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SOO\Desktop\Algorithm\python\Previous" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.1_1_search_sort">
+    <configuration name="1_1_search_sort" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Algorithm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/1_1_search_sort.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="programmers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Algorithm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\SOO\Desktop\Algorithm\python\Previous\programmers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.1_1_search_sort" />
+        <item itemvalue="Python.programmers" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -51,7 +118,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635231428324</updated>
+      <workItem from="1637376601758" duration="1124000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

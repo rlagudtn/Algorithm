@@ -1,26 +1,145 @@
+##################정수 삼각형
 
-def solution(N, number):
-    if N==number:
-        return 1
-    cache=[0,{N}]
-    for digit in range(2,9):
-        s=set([])
+# def solution(triangle):
+#     answer = 0
+#     size=len(triangle)
+#     cache=[[-1]*i for i in range(1,size+1)]
+#     def dfs(y,x):
+#         ##기저 사례
+#         if y==size-1:
+#             return triangle[y][x]
+#
+#
+#         ##한조각
+#         if(cache[y][x]!=-1):
+#             return cache[y][x]
+#         ##나머지 조각
+#         cache[y][x] = max(dfs(y + 1, x), dfs(y + 1, x + 1)) + triangle[y][x]
+#         return cache[y][x]
+#
+#     answer=dfs(0,0)
+#
+#     return answer
+# print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))
+###############입국심사
+# def solution(n, times):
+#     answer = 0
+#     start=1
+#     end=max(times)*n
+#     while start<=end:
+#         mid=(start+end)//2
+#         people=0
+#         print(start,end)
+#         for i in times:
+#             people+=mid//i
+#
+#             if people>=n:
+#                 break
+#
+#         if people>=n:
+#             answer=mid
+#             end=mid-1
+#         else:
+#             start=mid+1
+#
+#     return answer
+# print(solution(6,[7, 10]))
+# import heapq
+# def solution(n, edge):
+#     graph=[[] for i in range(n+1)]
+#     INF=int(1e9)
+#     cache=[INF]*(n+1)
+#     visit=[False]*(n+1)
+#     for a,b in edge:
+#         graph[a].append(b)
+#         graph[b].append(a)
+#
+#     q=[]
+#     heapq.heappush(q,(0,1))
+#     cache[1]=0
+#
+#     while q:
+#         dist,now=heapq.heappop(q)
+#         if dist>cache[now]:
+#             continue
+#         for next in graph[now]:
+#             nextDist=dist+1
+#             if nextDist<cache[next]:
+#                 cache[next]=nextDist
+#                 heapq.heappush(q,(nextDist,next))
+#     cache=[ x for x in cache if x!=INF]
+#     maxV=max(cache)
+#     answer = cache.count(maxV)
+#     return answer
+#
+# print(solution(6,[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]))
+# # ################디스크 컨트롤러
+#
+# def solution(jobs):
+#     answer = 0
+#     jobs.sort(key=lambda x:x[1])
+#     now=0
+#     length=len(jobs)
+#     while len(jobs)!=0:
+#         isNone = True
+#         for i in range(len(jobs)):
+#             if(jobs[i][0]<=now):
+#                 now+=jobs[i][1]
+#                 answer+=now-jobs[i][0]
+#                 jobs.pop(i)
+#                 isNone=False
+#                 break
+#         if isNone==True:
+#             now+=1
+#
+#
+#
+#     return answer//length
+#
+#
+# print(solution([[0, 3], [1, 9], [2, 6]]	))
 
-        for i in range(1,digit):
-            for num1 in cache[i]:
-                for num2 in cache[digit-i]:
-                    s.add(num1+num2)
-                    s.add(num1*num2)
-                    s.add(num1-num2)
-
-                    if num2!=0:
-                        s.add(num1//num2)
-        s.add(int((str(N))*digit))
-        if number in s:
-            return digit
-        cache.append(s)
-    return -1
-print(solution(5,31168))
+#
+# def solution(n, times):
+#     answer = 0
+#     start=1; end=max(times)*n
+#     while start<=end:
+#         mid=(start+end)//2
+#         people=0
+#         for i in times:
+#             people+=mid//i
+#             if people>=n:
+#                 break
+#         if people>=n:
+#             end=mid-1
+#             answer=mid
+#         else:
+#             start=mid+1
+#
+#     return answer
+# print(solution(1,[1]))
+# def solution(N, number):
+#     if N==number:
+#         return 1
+#     cache=[0,{N}]
+#     for digit in range(2,9):
+#         s=set([])
+#
+#         for i in range(1,digit):
+#             for num1 in cache[i]:
+#                 for num2 in cache[digit-i]:
+#                     s.add(num1+num2)
+#                     s.add(num1*num2)
+#                     s.add(num1-num2)
+#
+#                     if num2!=0:
+#                         s.add(num1//num2)
+#         s.add(int((str(N))*digit))
+#         if number in s:
+#             return digit
+#         cache.append(s)
+#     return -1
+# print(solution(5,31168))
 # import math
 # def solution(progresses, speeds):
 #     answer = []

@@ -1,37 +1,63 @@
-////9465
-#include <iostream>
-#include <string.h>
+////2156
+// #include <iostream>
+// #include <string.h>
 
-using namespace std;
-const int MAX=100000;
-int t,n,board[2][MAX],cache[2][MAX];
+// using namespace std;
+// const int MAX=10000;
+// int n,wines[MAX],cache[MAX];
+// int drink(int col){
+//     if(col==n-1)
+//         return
+//     if(col>=n-1)
+//         return 0;
+//     int& ret=cache[col];
+//     if(ret!=-1)
+//         return ret;
+//     ret=max(drink(col+2),drink(col+3)+wines[col+1])+wines[col];
+//     return ret;
+// }
+// int main(void){
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);
 
 
-int stick(int row,int col){
-    if(col>=n)
-        return 0;
-    int& ret=cache[row][col];
-    if(ret!=-1) 
-        return ret;
-    ret=max(stick(!row,col+1),stick(!row,col+2))+board[row][col];
+//     return 0;
+// }
 
-    return ret;
-}
-int main(void){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+// ////9465
+// #include <iostream>
+// #include <string.h>
 
-    cin>>t;
-    for(int k=0;k<t;k++){
-        cin>>n;
-        memset(cache,-1,sizeof(cache));
-        for(int i=0;i<2;i++)
-            for(int j=0;j<n;j++)
-                cin>>board[i][j];
-        cout<<max(stick(0,0),stick(1,0))<<endl;
-    }
-    return 0;
-}
+// using namespace std;
+// const int MAX=100000;
+// int t,n,board[2][MAX],cache[2][MAX];
+
+
+// int stick(int row,int col){
+//     if(col>=n)
+//         return 0;
+//     int& ret=cache[row][col];
+//     if(ret!=-1) 
+//         return ret;
+//     ret=max(stick(!row,col+1),stick(!row,col+2))+board[row][col];
+
+//     return ret;
+// }
+// int main(void){
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0); cout.tie(0);
+
+//     cin>>t;
+//     for(int k=0;k<t;k++){
+//         cin>>n;
+//         memset(cache,-1,sizeof(cache));
+//         for(int i=0;i<2;i++)
+//             for(int j=0;j<n;j++)
+//                 cin>>board[i][j];
+//         cout<<max(stick(0,0),stick(1,0))<<endl;
+//     }
+//     return 0;
+// }
 // ///////////////////////10819
 // #include <iostream>
 // #include <string.h>
