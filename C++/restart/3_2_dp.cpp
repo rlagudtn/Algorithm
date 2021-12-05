@@ -1,33 +1,58 @@
+// #include <iostream>
+// #include <string.h>
+// #include <algorithm>
+// using namespace std;
+// const int MAX=1000;
+// int n;
+// int arr[MAX][3];
+// int cache[MAX][3];
+// int dfs(int idx,int type){
+//     if(idx==n)
+//         return 0;
+    
+//     int& ret=cache[idx][type];
+//     if(ret!=-1)
+//         return ret;
+    
+//     int index[6]={0,1,2,0,1,2};
+//     return ret=min(dfs(idx+1,index[type+1]),dfs(idx+1,index[type+2]))+arr[idx][type];
+// }
+// int main(void){
+//     cin>>n;
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i][0]>>arr[i][1]>>arr[i][2];
+//     }
+//     memset(cache,-1,sizeof(cache));
+//     int answer=int(1e9);
+//     for(int i=0;i<3;i++){
+//         answer=min(answer,dfs(0,i));
+//     }
+//     cout<<answer<<"\n";
+//     return 0;
+// }
+
+
+//////////////1149 (3번)
 #include <iostream>
-#include <string.h>
 #include <algorithm>
 using namespace std;
-const int MAX=1000;
-int n;
-int arr[MAX][3];
-int cache[MAX][3];
-int dfs(int idx,int type){
-    if(idx==n)
-        return 0;
-    
-    int& ret=cache[idx][type];
-    if(ret!=-1)
-        return ret;
-    
-    int index[6]={0,1,2,0,1,2};
-    return ret=min(dfs(idx+1,index[type+1]),dfs(idx+1,index[type+2]))+arr[idx][type];
-}
+const int MAX=1001;
 int main(void){
+    int n,arr[MAX][3];
+    int cacheR[MAX],cacheG[MAX],cacheB[MAX];
+
     cin>>n;
-    for(int i=0;i<n;i++){
+    for(int i=1;i<=n;i++)
         cin>>arr[i][0]>>arr[i][1]>>arr[i][2];
+    cacheR[1]=arr[1][0];cacheG[1]=arr[1][1];cacheB[1]=arr[1][2];
+
+    for(int i=2;i<=n;i++){
+        cacheR[i]=min(cacheG[i-1],cacheB[i-1])+arr[i][0];
+        cacheG[i]=min(cacheR[i-1],cacheB[i-1])+arr[i][1];
+        cacheB[i]=min(cacheG[i-1],cacheR[i-1])+arr[i][2];
     }
-    memset(cache,-1,sizeof(cache));
-    int answer=int(1e9);
-    for(int i=0;i<3;i++){
-        answer=min(answer,dfs(0,i));
-    }
-    cout<<answer<<"\n";
+    cout<<min({cacheR[n],cacheG[n],cacheB[n]})<<"\n";
+    
     return 0;
 }
 // #include <iostream>
@@ -59,33 +84,31 @@ int main(void){
 //     cout<<dfs(0,0)<<"\n";
 //     return 0;
 // }
+////////////////1463 (2번)
 // #include <iostream>
 // #include <string.h>
 // #include <algorithm>
 // using namespace std;
-// const int MAX=300;
+// int n;
+// const int MAX=int(1e6);
 // int cache[MAX+1];
-// int arr[MAX+1];
-// int dfs(int idx){
-//     if(idx<=0)
-//         return 0;
-//     int& ret=cache[idx];
-//     if(ret!=-1)
-//         return ret;
-    
-//     return ret=max(dfs(idx-2),dfs(idx-3)+arr[idx-1])+arr[idx];
-// }
-// int main(void){
-//     int n;
+
+// int main(void)  {
 //     cin>>n;
-//     for(int i=1;i<=n;i++)
-//         cin>>arr[i];
-//     arr[0]=0;
 //     memset(cache,-1,sizeof(cache));
-//     cout<<dfs(n)<<"\n";
+//     cache[1]=0;
+//     for(int i=2;i<=n;i++){
+//         int& current=cache[i];
+//         current=MAX+1;
+//         if(i%3==0)
+//             current=min(current,cache[i/3]);
+//         if(i%2==0)
+//             current=min(current,cache[i/2]);
+//         current=min(current,cache[i-1])+1;
+//     }
+//     cout<<cache[n]<<"\n";
 //     return 0;
 // }
-// ////////////////1463 (2번)
 // #include <iostream>
 // #include <queue>
 // #include <string.h>

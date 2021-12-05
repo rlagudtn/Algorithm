@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6101b8df-8609-4098-b2f8-7c7b30e5ee0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javaL/src/1_Search_sort/1920.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/1_1_search_sort.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/DP/backjun.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/C++/DP/backjun.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WBS_2nd_PS.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/WBS_2nd_PS.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Brute_force.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Brute_force.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Dijkstra.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Dijkstra.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Dp.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Dp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Floyd_Warshall.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Floyd_Warshall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Greedy.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Greedy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Implement.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Implement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Kruskal.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Kruskal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Samsung.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/Samsung.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/SchoolCodingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/SchoolCodingTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/binary search.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/binary search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/judge.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/judge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/kakao recruitment level2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/kakao recruitment level2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/kakao21y2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/kakao21y2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/library.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/programmers.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/programmers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/위상정렬.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Previous/위상정렬.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +30,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-16" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../3학년 2학기/이산수학/과제/코드" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
