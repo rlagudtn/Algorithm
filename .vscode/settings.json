@@ -42,5 +42,6 @@
         "typeinfo": "cpp",
         "list": "cpp",
         "stack": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
