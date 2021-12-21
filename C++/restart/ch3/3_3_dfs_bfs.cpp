@@ -1,69 +1,71 @@
-////////////////////////2583 (6)
-#include <iostream>
-#include <queue>
-#include <string.h>
-#include <vector>
-#include <algorithm>
 
-using namespace std;
-const int MAX=100;
-int n,m,k,answer;
-int graph[MAX][MAX];
-int visit[MAX][MAX];
-int dy[4]={0,0,1,-1};
-int dx[4]={1,-1,0,0};
-int bfs(int y,int x ){
-    queue<pair<int,int>> q;
-    q.push({y,x});
-    visit[y][x]=1;
-    int cy,cx,ny,nx;
-    int cnt=0;
-    while(!q.empty()){
-        cy=q.front().first;cx=q.front().second;
-        q.pop();
 
-        cnt++;
-        for(int i=0;i<4;i++){
-            ny=cy+dy[i];nx=cx+dx[i];
-            if(0<=ny && ny<n && 0<=nx &&nx<m &&graph[ny][nx]==0 &&visit[ny][nx]==0){
-                visit[ny][nx]=1;
-                q.push({ny,nx});
-            }
-        }
+// ////////////////////////2583 (6)
+// #include <iostream>
+// #include <queue>
+// #include <string.h>
+// #include <vector>
+// #include <algorithm>
 
-    }
-    return cnt;
-}
-int main(void){
-    cin>>n>>m>>k;
-    int sx,sy,lx,ly;
-    memset(graph,0,sizeof(graph));
-    for(int t=0;t<k;t++){
-        cin>>sx>>sy>>lx>>ly;
-        for(int y=sy;y<ly;y++){
-            for(int x=sx;x<lx;x++){
-                graph[y][x]=1;
-            }
-        }
-    }
-    vector<int> ret;
-    int cnt=0;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            if(graph[i][j]==0&&visit[i][j]==0){
-                int temp=bfs(i,j);
-                cnt++;
-                ret.push_back(temp);
-            }
-        }
-    }
-    sort(ret.begin(),ret.end());
-    cout<<cnt<<"\n";
-    for(int i=0;i<ret.size();i++){
-        cout<<ret[i]<<" ";
-    }
-    return 0;
-}
+// using namespace std;
+// const int MAX=100;
+// int n,m,k,answer;
+// int graph[MAX][MAX];
+// int visit[MAX][MAX];
+// int dy[4]={0,0,1,-1};
+// int dx[4]={1,-1,0,0};
+// int bfs(int y,int x ){
+//     queue<pair<int,int>> q;
+//     q.push({y,x});
+//     visit[y][x]=1;
+//     int cy,cx,ny,nx;
+//     int cnt=0;
+//     while(!q.empty()){
+//         cy=q.front().first;cx=q.front().second;
+//         q.pop();
+
+//         cnt++;
+//         for(int i=0;i<4;i++){
+//             ny=cy+dy[i];nx=cx+dx[i];
+//             if(0<=ny && ny<n && 0<=nx &&nx<m &&graph[ny][nx]==0 &&visit[ny][nx]==0){
+//                 visit[ny][nx]=1;
+//                 q.push({ny,nx});
+//             }
+//         }
+
+//     }
+//     return cnt;
+// }
+// int main(void){
+//     cin>>n>>m>>k;
+//     int sx,sy,lx,ly;
+//     memset(graph,0,sizeof(graph));
+//     for(int t=0;t<k;t++){
+//         cin>>sx>>sy>>lx>>ly;
+//         for(int y=sy;y<ly;y++){
+//             for(int x=sx;x<lx;x++){
+//                 graph[y][x]=1;
+//             }
+//         }
+//     }
+//     vector<int> ret;
+//     int cnt=0;
+//     for(int i=0;i<n;i++){
+//         for(int j=0;j<m;j++){
+//             if(graph[i][j]==0&&visit[i][j]==0){
+//                 int temp=bfs(i,j);
+//                 cnt++;
+//                 ret.push_back(temp);
+//             }
+//         }
+//     }
+//     sort(ret.begin(),ret.end());
+//     cout<<cnt<<"\n";
+//     for(int i=0;i<ret.size();i++){
+//         cout<<ret[i]<<" ";
+//     }
+//     return 0;
+// }
 /////////////////////2836 (6)
 // #include <iostream>
 // #include <queue>
@@ -125,8 +127,50 @@ int main(void){
 
 //     return 0;
 // }
+////////////////////9466 (4) 두번째
+#include <iostream>
+#include <string.h>
+using namespace std;
 
-// ////////////////////9446 (5)
+int t,n,arr[100001],cycle[100001],visit[100001];
+
+int dfs(int idx){
+    int ret=0;
+    if(visit[idx]==0 ){
+        visit[idx]=1;
+        ret= dfs(arr[idx]);
+    }
+    else if(cycle[idx]==0){
+        int cnt=1;
+        int i=arr[idx];
+        while(i!=idx){
+            cnt++;
+            i=arr[i];
+        }
+        ret=cnt;
+    }
+    cycle[idx]=1;
+    return ret;
+}
+int main(void){
+    cin>>t;
+    for(int i=0;i<t;i++){
+        cin>>n;
+        memset(cycle,0,sizeof(cycle));
+        memset(visit,0,sizeof(visit));
+        for(int k=1;k<n+1;k++)
+            cin>>arr[k];
+
+        int answer=0;
+        for(int i=1;i<n+1;i++){
+            if(visit[i]==0){
+                answer+=dfs(i);
+            }
+        }
+        cout<<n-answer<<"\n";
+    }
+}
+// ////////////////////9466 (5)
 // #include <iostream>
 // #include <string.h>
 // #include <string>
@@ -305,3 +349,57 @@ int main(void){
 // //     cout<<answer<<"\n";
 // //     return 0;
 // // }
+// ////////////2206 (1) 두번째
+// #include <iostream>
+// #include <queue>
+// #include <string.h>
+// #include <string>
+// #include <vector>
+// using namespace std;
+// int n,m,arr[1000][1000],visit[1000][1000][2];
+// int dy[4]={0,0,1,-1};
+// int dx[4]={1,-1,0,0};
+// void bfs(){
+//     queue<vector<int>> q;
+//     q.push({0,0,1,0});
+//     visit[0][0][0]=1;
+//     int cy,cx,dist,broken,ny,nx;
+//     while(!q.empty()){
+//         vector<int> info=q.front();
+//         q.pop();
+//         cy=info[0];cx=info[1];dist=info[2];broken=info[3];
+//         if(cy==n-1 &&cx==m-1){
+//             cout<<dist<<"\n";
+//             return ;
+//         }
+//         for(int i=0;i<4;i++){
+//             ny=cy+dy[i];nx=cx+dx[i];
+//             if(ny<0 ||ny>=n||nx<0||nx>=m)
+//                 continue;
+//             if(broken==0&& arr[ny][nx]==1 ){
+//                 q.push({ny,nx,dist+1,1});
+//             }
+//             else if(arr[ny][nx]==0&&visit[ny][nx][broken]==0){
+//                 q.push({ny,nx,dist+1,broken});
+//                 visit[ny][nx][broken]=1;
+//             }
+//         }
+
+//     }
+//     cout<<-1<<"\n";
+//     return;
+// }
+// int main(void){
+//     memset(visit,0,sizeof(visit));
+//     cin>>n>>m;
+//     string temp;
+//     for(int i=0;i<n;i++){
+//         cin>>temp;
+//         for(int j=0;j<m;j++)
+//             arr[i][j]=temp[j]-'0';
+//     }
+
+//     bfs();
+
+//     return 0;
+// }
