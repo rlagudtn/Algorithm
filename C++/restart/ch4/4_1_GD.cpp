@@ -10,7 +10,6 @@
 // long long minValue=9876543210;
 // long long changeToStr(){
 //     long long ret=0;
-
 //     for(int i=0;i<k+1;i++){
 //         ret=ret*10+picked[i];
 //     }

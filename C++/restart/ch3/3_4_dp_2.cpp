@@ -1,3 +1,31 @@
+///////////////11053 (6)
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+int n,arr[1001],cache[1001];
+int dfs(int idx){
+    int& ret=cache[idx];
+    if(ret!=-1)
+        return ret;
+
+    ret=0;
+    for(int i=idx+1;i<n+1;i++){
+        if(arr[i]>arr[idx]){
+            ret=max(ret,dfs(i));
+        }
+    }
+    return ret+=1;
+}
+int main(void){
+    cin>>n;
+    arr[0]=0;
+    for(int i=1;i<n+1;i++)
+        cin>>arr[i];
+    memset(cache,-1,sizeof(cache));
+    cout<<dfs(0)-1<<"\n";
+    return 0;
+}
 
 
 
