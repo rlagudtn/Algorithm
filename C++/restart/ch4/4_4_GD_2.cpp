@@ -1,50 +1,83 @@
-#include <queue>
-#include <iostream>
-#include <string.h>
-#include <algorithm>
-using namespace std;
-bool compare(string a,string b){
-    if(a.size()>b.size()){
-        for(int i=0;i<b.size();i++){
-            if(a[i]>b[i])
-                return a>b;
-            else if(a[i]<b[i])
-                return a<b;
-            
-        }
-        return a[0]>a[b.size()];
 
-    }
-    else if(a.size()<b.size()){
-        for(int i=0;i<a.size();i++){
-            if(a[i]>b[i])
-                return a>b;
-            else if(a[i]<b[i])
-                return a<b;
-            
-        }
-        return b[0]>b[a.size()];
-            
-    }
-    return a>b;
-}
-int main(void){
-    string arr[50];
-    int n,k;
-    cin>>n>>k;
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    sort(arr,arr+n,compare);
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<"\n";
-    return 0;
-}
+//////////////////1422(5)
+// #include <queue>
+// #include <iostream>
+// #include <string>
+// #include <algorithm>
+// using namespace std;
+// bool compare(int a,int b){
+//     string first=to_string(a)+to_string(b);
+//     string second=to_string(b)+to_string(a);
+//     return first>second;
+// }
+// int main(void){
+//     int arr[50];
+//     int n,k;
+//     cin>>n>>k;
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     int maxValue=*max_element(arr,arr+n);
+
+//     vector<int> nums={arr,arr+n};
+//     for(int i=0;i<k-n;i++)
+//         nums.push_back(maxValue);
+
+//     sort(nums.begin(),nums.end(),compare);
+
+//     string answer="";
+//     for(int i=0;i<k;i++)
+//         answer+=to_string(nums[i]);
+//     cout<<answer<<"\n";
+
+//     return 0;
+// }
 
 
-// ////////////1826
+// ////////////1826 (4)
+// #include <iostream>
+// #include <queue>
+// #include <algorithm>
+
+// using namespace std;
+
+// int main(void){
+//     int n,L,P;
+//     pair<int,int> arr[10000];
+//     cin>>n;
+//     for(int i=0;i<n;i++)
+//         cin>>arr[i].first>>arr[i].second;
+//     cin>>L>>P;
+//     sort(arr,arr+n);
+
+//     priority_queue<int> pq;
+//     int index=0,canGo=P,answer=0;
+//     while(canGo<L){
+//         while(index<n &&arr[index].first<=canGo){
+//             pq.push(arr[index].second);
+//             index++;
+//         }
+//         if(pq.empty()){
+//             answer=-1;
+//             break;
+//         }
+//         canGo+=pq.top();
+//         cout<<canGo<<"\n";
+//         pq.pop();
+//         answer++;
+//     }
+//     cout<<answer<<"\n";
+//     return 0;    
+// }
+
+
+
+
+
+
+
+
+
 // #include <iostream>
 // #include <queue>
 // #include <algorithm>
@@ -167,47 +200,40 @@ int main(void){
 
 // //////////////////1202
 // #include <iostream>
-// #include <vector>
 // #include <queue>
 // #include <algorithm>
-
 // using namespace std;
-// bool compare(pair<int,int> a,pair<int,int> b){
-//     if(a.second==b.second)
-//         return a.first<b.first;
-//     return a.second>b.second;
-// }
-// int main(void){
-//     int n,k,bags[300000],m,v;
-//     ios_base::sync_with_stdio(0);
-//     cin.tie(0);cout.tie(0);
-//     cin>>n>>k;
-//     vector<pair<int,int>> jewels(n);
-//     int visit[k]={0,};
-//     for(int i=0;i<n;i++){
-//         cin>>jewels[i].first>>jewels[i].second;
-//     }
-//     for(int i=0;i<k;i++){
-//         cin>>bags[i];
-//     }
+// int n,k,bags[300000];
+// pair<int,int> jewels[300000];
 
-//     sort(jewels.begin(),jewels.end());
+// int main(void){
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);
+
+//     cin>>n>>k;
+//     for(int i=0;i<n;i++)
+//         cin>>jewels[i].first>>jewels[i].second;
+//     for(int i=0;i<k;i++)
+//         cin>>bags[i];
+    
+//     sort(jewels,jewels+n);
 //     sort(bags,bags+k);
 
-//     int idx=0;
-//     long long answer=0;
 //     priority_queue<int> pq;
+//     long long answer=0;
+//     int index=0;
 //     for(int i=0;i<k;i++){
-//         while(idx<n && jewels[idx].first<=bags[i]){
-//             pq.push(jewels[idx].second);
-//             idx++;
+//         while(index<n && jewels[index].first<=bags[i]){
+//             pq.push(jewels[index].second);
+//             index++;
 //         }
 //         if(!pq.empty()){
 //             answer+=pq.top();
 //             pq.pop();
 //         }
+        
 //     }
 //     cout<<answer<<"\n";
-
+    
 //     return 0;
 // }

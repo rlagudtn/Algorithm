@@ -1,3 +1,51 @@
+////////////////////2529
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+int n;
+int visit[10]={0,};
+vector<int> picked;
+char signs[10];
+long long maxValue=0;
+long long minValue=9876543210;
+void dfs(int idx){
+    if(picked.size()==n+2){
+        long long temp=0;
+        for(int i=1;i<picked.size();i++)
+            temp=temp*10+picked[i];
+        maxValue=max(maxValue,temp);
+        minValue=min(minValue,temp); 
+        return ;
+    }
+    for(int i=0;i<10;i++){
+        if(visit[i]==0 &&((signs[idx]=='<'&& picked[idx]<i)||(signs[idx]=='>'&& picked[idx]>i))){
+            picked.push_back(i);
+            visit[i]=1;
+            dfs(idx+1);
+            picked.pop_back();
+            visit[i]=0;
+        }
+    }
+}
+int main(void){
+    cin>>n;
+    for(int i=1;i<n+1;i++)
+        cin>>signs[i];
+    signs[0]='<';
+    
+    picked.push_back(-1);
+    dfs(0);
+    string maxS="0"+to_string(maxValue);
+    maxS=maxS.substr(maxS.length()-(n+1));
+    string minS="0"+to_string(minValue);
+    minS=minS.substr(minS.length()-(n+1));
+    cout<<maxS<<"\n"<<minS<<"\n";
+    return 0;
+}
+
+
 
 // #include <iostream>
 // #include <string.h>

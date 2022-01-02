@@ -2,38 +2,72 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-int n,c;
-int arr[200000];
+
 int main(void){
+    int n,c,arr[200000];
     cin>>n>>c;
     for(int i=0;i<n;i++)
         cin>>arr[i];
     sort(arr,arr+n);
-
-    int start,end,mid,last;
-    int answer=0;
-    start=0;end=arr[n-1]-arr[0];
+    int start=0,end=arr[n-1],mid,cnt,current;
+    int answer=end;
     while(start<=end){
         mid=(start+end)/2;
-        last=arr[0]+mid;
-        int cnt=1;
+        cnt=1;
+        current=arr[0];
         for(int i=1;i<n;i++){
-            if(arr[i]>=last){
-                last=arr[i]+mid;
+            if(arr[i]-current>=mid){
                 cnt++;
+                current=arr[i];
             }
         }
         if(cnt>=c){
             answer=mid;
             start=mid+1;
         }
-        else{
+        else
             end=mid-1;
-        }
     }
     cout<<answer<<"\n";
     return 0;
 }
+
+
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+// int n,c;
+// int arr[200000];
+// int main(void){
+//     cin>>n>>c;
+//     for(int i=0;i<n;i++)
+//         cin>>arr[i];
+//     sort(arr,arr+n);
+
+//     int start,end,mid,last;
+//     int answer=0;
+//     start=0;end=arr[n-1]-arr[0];
+//     while(start<=end){
+//         mid=(start+end)/2;
+//         last=arr[0]+mid;
+//         int cnt=1;
+//         for(int i=1;i<n;i++){
+//             if(arr[i]>=last){
+//                 last=arr[i]+mid;
+//                 cnt++;
+//             }
+//         }
+//         if(cnt>=c){
+//             answer=mid;
+//             start=mid+1;
+//         }
+//         else{
+//             end=mid-1;
+//         }
+//     }
+//     cout<<answer<<"\n";
+//     return 0;
+// }
 
 
 // /////////////2512(4)

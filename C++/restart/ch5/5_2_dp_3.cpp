@@ -1,25 +1,25 @@
 ////////////////////11051(6)
-#include <iostream>
-#include <string.h>
+// #include <iostream>
+// #include <string.h>
 
-using namespace std;
-int cache[1001][1001];
-int dfs(int n,int k){
-    if(k==0 ||k==n)
-        return 1;
-    int& ret=cache[n][k];
-    if(ret!=-1)
-        return ret;
+// using namespace std;
+// int cache[1001][1001];
+// int dfs(int n,int k){
+//     if(k==0 ||k==n)
+//         return 1;
+//     int& ret=cache[n][k];
+//     if(ret!=-1)
+//         return ret;
     
-    return ret=(dfs(n-1,k-1)+dfs(n-1,k))%10007;
-}
-int main(void){
-    int n,k;
-    cin>>n>>k;
-    memset(cache,-1,sizeof(cache));
-    cout<<dfs(n,k)<<"\n";
-    return 0;
-}
+//     return ret=(dfs(n-1,k-1)+dfs(n-1,k))%10007;
+// }
+// int main(void){
+//     int n,k;
+//     cin>>n>>k;
+//     memset(cache,-1,sizeof(cache));
+//     cout<<dfs(n,k)<<"\n";
+//     return 0;
+// }
 // ///////////////9252(5)
 // #include <iostream>
 // #include <string.h>
@@ -91,33 +91,33 @@ int main(void){
 // }
 
 // ///////////////12015 (3)
-// #include <iostream>
-// #include <vector>
+#include <iostream>
+#include <vector>
 
-// using namespace std;
-// int arr[1000000];
-// int main(void){
-//     ios_base::sync_with_stdio(0);
-//     cin.tie(0);
-//     int n;
-//     cin>>n;
-//     for(int i=0;i<n;i++)    
-//         cin>>arr[i];
+using namespace std;
+int arr[1000000];
+int main(void){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++)    
+        cin>>arr[i];
 
-//     vector<int> lis;
-//     lis.push_back(0);
+    vector<int> lis;
+    lis.push_back(0);
     
-//     for(int i=0;i<n;i++){
-//         if(arr[i]>lis.back())
-//             lis.push_back(arr[i]);
-//         else{
-//             int index=lower_bound(lis.begin(),lis.end(),arr[i])-lis.begin();
-//             lis[index]=arr[i];
-//         }
-//     }
-//     cout<<lis.size()-1<<"\n";   
-//     return 0;
-// }
+    for(int i=0;i<n;i++){
+        if(arr[i]>lis.back())
+            lis.push_back(arr[i]);
+        else{
+            int index=lower_bound(lis.begin(),lis.end(),arr[i])-lis.begin();
+            lis[index]=arr[i];
+        }
+    }
+    cout<<lis.size()-1<<"\n";   
+    return 0;
+}
 
 
 
