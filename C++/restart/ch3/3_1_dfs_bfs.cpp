@@ -1,4 +1,88 @@
+// ////////1463(3)
+// #include <iostream>
+// #include <queue>
+// using namespace std;
+// const int INF=1e9;
+// int n,cache[1000001];
+// int main(void){
+//   cin>>n;
+//   queue<pair<int,int>> q;
+//   for(int i=1;i<n;i++)
+//     cache[i]=INF;
+//   cache[n]=0;
+//   q.push({n,0});
+//   while(!q.empty()){
+//     int now=q.front().first;
+//     int cost=q.front().second;
+//     q.pop();
+//     if(cost>cache[now])
+//       continue;
 
+//     for(int i=3;i>=2;i--){
+//       int next=now/i;
+//       if(now%i==0&&cache[next]>cache[now]+1){
+//         cache[next]=cache[now]+1;
+//         q.push({next,cache[next]});
+//       }
+//     }
+//     if(now-1>=1 && cache[now-1]>cache[now]+1){
+//       cache[now-1]=cache[now]+1;
+//       q.push({now-1,cache[now-1]});
+//     }
+
+//   }
+//   cout<<cache[1]<<"\n";
+//   return 0;
+// }
+
+/////////1697(2)
+// #include <iostream>
+// #include <queue>
+// using namespace std;
+// const int MAX=200000;
+// int cache[MAX]={0,};
+// int main(void){
+//   int n,k;
+//   cin>>n>>k;
+//   if(n>=k){
+//     cout<<n-k<<"\n";
+//     return 0;
+//   }
+
+//   queue<int> q;
+//   q.push(n);
+  
+//   while(!q.empty()){
+//     int now=q.front();
+//     q.pop();
+//     if(now==k)
+//       break;
+    
+//     for(int i=0;i<3;i++){
+//       int next;
+//       switch (i)
+//       {
+//       case 0:
+//         next=now-1;
+//         break;
+//       case 1:
+//         next=now+1;
+//         break;
+//       case 2:
+//         next=now*2;
+//         break;      
+//       default:
+//         break;
+//       }
+//       if(next>=0&&next<MAX&&cache[next]==0){
+//         q.push(next);
+//         cache[next]=cache[now]+1;
+//       }
+//     }
+//   }
+//   cout<<cache[k]<<"\n";
+//   return 0;
+// }
 // #include <stdio.h>
 // #include <queue>
 

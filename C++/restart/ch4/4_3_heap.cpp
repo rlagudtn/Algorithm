@@ -1,34 +1,73 @@
-////////////////////1655
+// ////////////////////1655 (4)
 #include <iostream>
 #include <queue>
 
 using namespace std;
+int n,arr[100000];
 
 int main(void){
-    int n,temp;
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);
+
     cin>>n;
+
+    for(int i=0;i<n;i++)
+        cin>>arr[i];        
+    
     priority_queue<int> left;
-    priority_queue<int,vector<int>,greater<int>> right;
-    int leftMax,rightMin;
-    for(int i=0;i<n;i++){
-        cin>>temp;
-        if(left.size()<=right.size())
-            left.push(temp);
+    priority_queue<int> right;
+    left.push(arr[0]);
+    cout<<arr[0]<<"\n";
+    for(int i=1;i<n;i++){
+        if(i%2==0)
+            left.push(arr[i]);
         else
-            right.push(temp);
+            right.push(-arr[i]);
         
-        if(right.size()>0 && left.top()>right.top()){
-            leftMax=left.top();left.pop();
-            rightMin=right.top();right.pop();
-            right.push(leftMax);
-            left.push(rightMin);
+        int lt=left.top();
+        int rt=-right.top();
+        if(lt>rt){
+            left.pop();right.pop();
+            left.push(rt);
+            right.push(-lt);
         }
         cout<<left.top()<<"\n";
     }
+        
     return 0;
 }
+
+
+// #include <iostream>
+// #include <queue>
+
+// using namespace std;
+
+// int main(void){
+//     int n,temp;
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);cout.tie(0);
+//     cin>>n;
+//     priority_queue<int> left;
+//     priority_queue<int,vector<int>,greater<int>> right;
+//     int leftMax,rightMin;
+//     for(int i=0;i<n;i++){
+//         cin>>temp;
+//         if(left.size()<=right.size())
+//             left.push(temp);
+//         else
+//             right.push(temp);
+        
+//         if(right.size()>0 && left.top()>right.top()){
+//             leftMax=left.top();left.pop();
+//             rightMin=right.top();right.pop();
+//             right.push(leftMax);
+//             left.push(rightMin);
+//         }
+//         cout<<left.top()<<"\n";
+//     }
+//     return 0;
+// }
 
 // ///////////////////1715
 // #include <iostream>

@@ -1,31 +1,53 @@
-///////////////11053 (6)
+/////////////////11052
 #include <iostream>
-#include <string.h>
 
 using namespace std;
-int n,arr[1001],cache[1001];
-int dfs(int idx){
-    int& ret=cache[idx];
-    if(ret!=-1)
-        return ret;
-
-    ret=0;
-    for(int i=idx+1;i<n+1;i++){
-        if(arr[i]>arr[idx]){
-            ret=max(ret,dfs(i));
-        }
-    }
-    return ret+=1;
-}
+int n,arr[1001],cache[1001]={0,};
 int main(void){
-    cin>>n;
-    arr[0]=0;
-    for(int i=1;i<n+1;i++)
-        cin>>arr[i];
-    memset(cache,-1,sizeof(cache));
-    cout<<dfs(0)-1<<"\n";
-    return 0;
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+
+  cin>>n;
+  for(int i=1;i<=n;i++)
+    cin>>arr[i];
+
+  for(int i=1;i<=n;i++){
+    for(int j=i;j<=n;j++){
+      cache[j]=max(cache[j],cache[j-i]+arr[i]);
+    }
+  }
+  cout<<cache[n]<<"\n";
+  return 0;
 }
+
+// ///////////////11053 (6)
+// #include <iostream>
+// #include <string.h>
+
+// using namespace std;
+// int n,arr[1001],cache[1001];
+// int dfs(int idx){
+//     int& ret=cache[idx];
+//     if(ret!=-1)
+//         return ret;
+
+//     ret=0;
+//     for(int i=idx+1;i<n+1;i++){
+//         if(arr[i]>arr[idx]){
+//             ret=max(ret,dfs(i));
+//         }
+//     }
+//     return ret+=1;
+// }
+// int main(void){
+//     cin>>n;
+//     arr[0]=0;
+//     for(int i=1;i<n+1;i++)
+//         cin>>arr[i];
+//     memset(cache,-1,sizeof(cache));
+//     cout<<dfs(0)-1<<"\n";
+//     return 0;
+// }
 
 
 
@@ -60,7 +82,56 @@ int main(void){
 //     cout<<dfs(n)<<"\n";
 //     return 0;
 // }
+// ///////////2293(4)
+// #include <iostream>
+// #include <string.h>
+// using namespace std;
+// int n,k,arr[100],cache[10000];
+
+// int dfs(int num,int idx) {
+//   if(num==0)
+//     return 1;
+//   else if(num<0)
+//     return 0;
+//   int& answer=cache[num];
+//   for(int i=idx;i<n;i++){
+//     answer+=dfs(num-arr[i],i);
+//   }
+//   return answer;
+// }
+// int main(void){
+//   ios_base::sync_with_stdio(0);
+//   cin.tie(0);
+  
+//   cin>>n>>k;
+//   for(int i=0;i<n;i++)
+//     cin>>arr[i];
+//   cout<<dfs(k,0)<<"\n";
+//   return 0;
+// }
+
 // 1912 (3)
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+// int n,arr[100001],sum[100001]={0,};
+// int main(void){
+//   ios_base::sync_with_stdio(0);
+//   cin.tie(0);
+//   cin>>n;
+  
+//   for(int i=1;i<=n;i++)
+//     cin>>arr[i];
+  
+//   for(int i=1;i<=n;i++){
+//     if(sum[i-1]>=0)
+//       sum[i]=sum[i-1]+arr[i];
+//     else 
+//       sum[i]=arr[i];
+//   }
+//   cout<<*max_element(sum+1,sum+n+1)<<"\n";
+//   return 0;
+// }
 // #include <iostream>
 // #include <string.h>
 // #include <algorithm>

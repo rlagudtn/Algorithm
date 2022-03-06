@@ -1,3 +1,65 @@
+// ///////////2206(3)
+// #include <iostream>
+// #include <queue>
+// #include <string.h>
+
+// using namespace std;
+// int n,m,arr[1000][1000];
+// int dist[1000][1000][2]={0,};
+// int dy[4]={0,0,1,-1},dx[4]={1,-1,0,0};
+// struct Info{
+//   int y;
+//   int x;
+//   int broken;
+//   int cost;
+// };
+// int main(void){
+//   ios_base::sync_with_stdio(0);
+//   cin.tie(0);
+//   cin>>n>>m;
+//   for(int i=0;i<n;i++){
+//     string temp;
+//     cin>>temp;
+//     for(int j=0;j<m;j++)
+//       arr[i][j]=temp[j]-'0';
+//   }
+//   queue<Info> q;
+//   q.push({0,0,0,1});
+//   dist[0][0][0]=1;
+//   while(!q.empty()){
+//     int cy=q.front().y,cx=q.front().x;
+//     int cost=q.front().cost;
+//     bool broken=q.front().broken;
+//     q.pop();
+//     if(cy==n-1&&cx==m-1){
+//       int answer=0;
+//       if(dist[cy][cx][0]!=0 && dist[cy][cx][1]!=0)
+//         answer=min(dist[cy][cx][0],dist[cy][cx][1]);
+//       else if(dist[cy][cx][0]!=0)
+//         answer=dist[cy][cx][0];
+//       else if(dist[cy][cx][1]!=0)
+//         answer=dist[cy][cx][1];  
+      
+//       cout<<answer<<"\n";
+//       return 0;
+//     }
+//     for(int i=0;i<4;i++){
+//       int ny=cy+dy[i],nx=cx+dx[i];
+//       if(ny<0||ny>=n||nx<0||nx>=m)
+//         continue;
+//       if(arr[ny][nx]==0&&dist[ny][nx][broken]==0){
+//         q.push({ny,nx,broken,cost+1});
+//         dist[ny][nx][broken]=cost+1;
+//       }
+//       else if(arr[ny][nx]==1&& broken==0&&dist[ny][nx][1]==0){
+//         q.push({ny,nx,1,cost+1});
+//         dist[ny][nx][1]=cost+1;
+//       }
+//     }
+//   }
+//   cout<<-1<<"\n";
+//   return 0;
+// }
 
 
 // ////////////////////////2583 (6)
@@ -130,46 +192,90 @@
 ////////////////////9466 (4) 두번째
 #include <iostream>
 #include <string.h>
+
 using namespace std;
-
-int t,n,arr[100001],cycle[100001],visit[100001];
-
-int dfs(int idx){
-    int ret=0;
-    if(visit[idx]==0 ){
-        visit[idx]=1;
-        ret= dfs(arr[idx]);
+const int MAX=1e5+1;
+int t,n,cnt;
+int arr[MAX],visit[MAX],cycleVisit[MAX];
+void dfs(int idx){
+  if(cycleVisit[idx]==1){
+    int next=arr[idx];
+    
+    cnt++;
+    while (next != idx){
+      cnt++;
+      next = arr[next];
     }
-    else if(cycle[idx]==0){
-        int cnt=1;
-        int i=arr[idx];
-        while(i!=idx){
-            cnt++;
-            i=arr[i];
-        }
-        ret=cnt;
-    }
-    cycle[idx]=1;
-    return ret;
+
+    return ;
+  }
+  if(visit[idx]==1)
+    return;
+  cycleVisit[idx]=1;
+  visit[idx]=1;
+  dfs(arr[idx]);
+  cycleVisit[idx]=0;
+  
 }
 int main(void){
-    cin>>t;
-    for(int i=0;i<t;i++){
-        cin>>n;
-        memset(cycle,0,sizeof(cycle));
-        memset(visit,0,sizeof(visit));
-        for(int k=1;k<n+1;k++)
-            cin>>arr[k];
-
-        int answer=0;
-        for(int i=1;i<n+1;i++){
-            if(visit[i]==0){
-                answer+=dfs(i);
-            }
-        }
-        cout<<n-answer<<"\n";
-    }
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);cout.tie(0);
+  cin>>t;
+  for(int k=0;k<t;k++){
+    cin>>n;
+    for(int i=1;i<=n;i++)
+      cin>>arr[i];
+    memset(visit,0,sizeof(visit));
+    cnt=0;
+    for(int i=1;i<=n;i++)
+      dfs(i);
+    
+    cout<<n-cnt<<"\n";
+  }
+  return 0;
 }
+// #include <iostream>
+// #include <string.h>
+// using namespace std;
+
+// int t,n,arr[100001],cycle[100001],visit[100001];
+
+// int dfs(int idx){
+//     int ret=0;
+//     if(visit[idx]==0 ){
+//         visit[idx]=1;
+//         ret= dfs(arr[idx]);
+//     }
+//     else if(cycle[idx]==0){
+//         int cnt=1;
+//         int i=arr[idx];
+//         while(i!=idx){
+//             cnt++;
+//             i=arr[i];
+//         }
+//         ret=cnt;
+//     }
+//     cycle[idx]=1;
+//     return ret;
+// }
+// int main(void){
+//     cin>>t;
+//     for(int i=0;i<t;i++){
+//         cin>>n;
+//         memset(cycle,0,sizeof(cycle));
+//         memset(visit,0,sizeof(visit));
+//         for(int k=1;k<n+1;k++)
+//             cin>>arr[k];
+
+//         int answer=0;
+//         for(int i=1;i<n+1;i++){
+//             if(visit[i]==0){
+//                 answer+=dfs(i);
+//             }
+//         }
+//         cout<<n-answer<<"\n";
+//     }
+// }
 // ////////////////////9466 (5)
 // #include <iostream>
 // #include <string.h>

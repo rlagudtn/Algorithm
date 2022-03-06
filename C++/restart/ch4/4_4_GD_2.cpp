@@ -196,9 +196,85 @@
 
 //     return 0;
 // }
+//////////////1826(4)
+#include <iostream>
+#include <queue>
+#include <algorithm>
+using namespace std;
+pair<int,int> gasStation[10000];
+int n,L,P;
+int main(void){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
+    cin>>n;
+    for(int i=0;i<n;i++)
+        cin>>gasStation[i].first>>gasStation[i].second;
+    sort(gasStation,gasStation+n);
 
-// //////////////////1202
+    cin>>L>>P;
+
+    int canGo=P;
+    priority_queue<int> pq;
+    int pos=0,answer=0;
+    while(canGo<L){
+        while(pos<n &&gasStation[pos].first<=canGo){
+            pq.push(gasStation[pos].second);
+            pos++;
+        }
+        if(pq.empty()){
+            answer=-1;
+            break;
+        }
+        canGo+=pq.top();
+        pq.pop();
+        answer++;
+    }
+    cout<<answer<<"\n";
+    return 0;
+}
+// //////////////////1202(1)
+// #include <iostream>
+// #include <queue>
+// #include <vector>
+// #include <algorithm>
+// using namespace std;
+// int n,k;
+// pair<int,int> jewels[300000];
+// int bags[300000];
+// bool compare(pair<int,int> a,pair<int,int> b){
+//     return a.first<b.first;
+// }
+// int main(void){
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);
+    
+//     cin>>n>>k;
+//     for(int i=0;i<n;i++)
+//         cin>>jewels[i].first>>jewels[i].second;
+//     for(int i=0;i<k;i++)
+//         cin>>bags[i];
+    
+//     sort(jewels,jewels+n,compare);
+//     sort(bags,bags+k);
+    
+//     long long answer=0;
+//     priority_queue<int> pq;
+//     int current=0;
+//     for(int i=0;i<k;i++){
+//         while(current<n&&jewels[current].first<=bags[i]){
+//             pq.push(jewels[current].second);
+//             current++;
+//         } 
+//         if(pq.empty())
+//             continue ;
+//         answer+=pq.top();
+//         pq.pop();
+//     }
+//     cout<<answer<<"\n";
+//     return 0;
+// }
+
 // #include <iostream>
 // #include <queue>
 // #include <algorithm>

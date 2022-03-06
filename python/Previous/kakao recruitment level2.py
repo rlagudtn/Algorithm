@@ -1,5 +1,61 @@
+MAX = 0
+
+
+def getScore(lion, apeach):
+    sumL = 0
+    sumA = 0
+    for i in range(11):
+        if lion[i] == 0 and apeach[i] == 0:
+            continue
+        if lion[i] <= apeach[i]:
+            sumA += 10 - i
+        else:
+            sumL += 10 - i
+    return sumL - sumA
+
+
+def solution(n, info):
+    answer = [0 for _ in range(11)]
+
+    picked = []
+
+    def dfs(n):
+        global MAX
+        if (len(picked) == 11 and n == 0):
+            score = getScore(picked, info)
+            if (score > MAX):
+                MAX = score
+                for i in range(11):
+                    answer[i] = picked[i]
+            elif score == MAX:
+                for i in range(10, -1, -1):
+                    if(answer[i]==picked[i]):
+                        continue
+                    elif answer[i]<picked[i]:
+                        for j in range(11):
+                            answer[j] = picked[j]
+                    else:
+                        break
+
+            return
+        elif (len(picked) == 11 and n != 0):
+            return
+        for i in range(n + 1):
+            picked.append(i)
+            dfs(n - i)
+            picked.pop()
+
+    dfs(n)
+    if (getScore(answer, info) <= 0):
+        answer = [-1]
+    return answer
+print(solution(5,[2,1,1,1,0,0,0,0,0,0,0]))
+print(solution(1,[1,0,0,0,0,0,0,0,0,0,0]))
+print(solution(9,[0,0,1,2,0,1,1,1,1,1,1]))
+print(solution(10,[0,0,0,0,0,0,0,0,3,4,3]))
 #########3
-from bisect import bisect_left
+
+# from bisect import bisect_left
 # from bisect import bisect_left
 # def move_left(arr,s,d):
 #     i=s
@@ -113,7 +169,7 @@ from bisect import bisect_left
 #
 #
 #     return "".join(answer)
-print(solution(8,2,["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
+# print(solution(8,2,["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
 # #########2
 #
 # def invertTwoDem(s):

@@ -1,5 +1,32 @@
 
-// //////////////////10815
+// //////////////////10815(4)
+#include <iostream>
+#include <queue>
+using namespace std;
+const int MAX=1e7;
+int d[MAX*2+1]={0,};
+int main(void){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+    int n,m,a;
+
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>a;
+        d[MAX+a]=1;
+    }
+    cin>>m;
+    for(int i=0;i<m;i++){
+        cin>>a;
+        cout<<d[MAX+a]<<" ";
+    }
+
+    return 0;
+}
+
+
+
+
 // #include <stdio.h>
 // #include <algorithm>
 // #include <vector>
